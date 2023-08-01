@@ -25,7 +25,7 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
 
     
 
-**PLD XML Includes:**
+**PLD XML Includes(Shoutout to Rival for doing the heavy lifting on this one):**
 
     -Auto sets macrobook depending on sub and lockstyle
   
