@@ -1,0 +1,425 @@
+<ashitacast>
+        <settings>
+			<buffupdate>true</buffupdate> 
+			<statusupdate>true</statusupdate> 
+			<hpupdate>false</hpupdate> 
+			<autoupdate>true</autoupdate>
+        </settings>
+		
+		<!--INITIALIZATION: Will change macro books based on sub job and will set lockstyle-->
+		<init>
+		<command delay="1500">/echo ****** Initializing Miicahh AshitaCast ******</command>
+        <command delay="1600">/echo Job is %p_job.</command>
+		<command delay="2100">/macro book $macrobook</command>
+        <command delay="3100">/macro set $macropage</command>
+        <command delay="4100">/lockstyleset $lockstyleset</command>
+		<if p_mainjob="DRG"><setvar name="macrobook" value="3" /><setvar name="lockstyleset" value="21" /></if>
+        <if p_subjob="WHM"><setvar name="macrobook" value="3" /></if>
+		<if p_subjob="WHM"><setvar name="macropage" value="1" /></if> 
+		<if p_subjob="SAM"><setvar name="macrobook" value="5" /></if>
+		<if p_subjob="SAM"><setvar name="macropage" value="1" /></if>
+		<if p_subjob="WAR"><setvar name="macrobook" value="6" /></if>
+		<if p_subjob="WAR"><setvar name="macropage" value="1" /></if>  
+		</init>
+		
+		<!--FLAG DECLARATIONS-->
+	    <variables>
+			<var name="Physical_DT">0</var>
+			<var name="Passive_Regen">0</var>
+			<var name="Accuracy">0</var>
+			<var name="Virtue_Stone">0</var>
+        </variables>	
+		
+		<!--SETS START HERE-->
+        <sets>
+		<set name="Idle">
+			<head priority="">Homam Zucchetto</head>
+			<neck priority="">Merman's Gorget</neck>
+			<lear priority="">Brutal Earring</lear>
+			<rear priority="">Coral Earring</rear>
+			<body priority="">Homam Corazza</body>
+			<hands priority="">Gavial Fng. Gnt.</hands>
+			<lring priority="">Rajas Ring</lring>
+			<rring priority="">Jelly Ring</rring>
+			<back priority="">Forager's Mantle</back>
+			<waist priority="">Swift Belt</waist>
+			<legs priority="">Gavial Cuisses</legs>
+			<feet priority="">Gavial Greaves</feet>
+			<ammo priority="">Happy Egg</ammo>
+		</set>
+		
+		<set name="Haste" baseset="PDT">
+			<head priority="">Homam Zucchetto</head>
+			<hands priority="">Dusk Gloves</hands>
+			<waist priority="">Swift Belt</waist>
+			<back priority="">Shadow Mantle</back>
+			<legs priority="">Homam Cosciales</legs>
+			<feet priority="">Dusk Ledelsens</feet>
+		</set>
+		
+		<set name="MND" baseset="Idle">
+			<neck priority=""></neck>
+			<hands priority=""></hands>
+			<waist priority=""></waist>
+			<legs priority=""></legs>
+		</set>
+		
+		<set name="PDT" baseset="Idle">
+			<lring priority=""></lring>
+			<back priority=""></back>
+		</set>
+		
+		<set name="whmTP">
+			<head priority="">Homam Zucchetto</head>
+			<neck priority="">Merman's Gorget</neck>
+			<lear priority="">Brutal Earring</lear>
+			<rear priority="">Ethereal Earring</rear>
+			<body priority="">Homam Corazza</body>
+			<hands priority="">Dusk Gloves</hands>
+			<lring priority="">Rajas Ring</lring>
+			<rring priority="">Sniper's Ring</rring>
+			<back priority="">Forager's Mantle</back>
+			<waist priority="">Swift Belt</waist>
+			<legs priority="">Homam Cosciales</legs>
+			<feet priority="">Drachen Greaves</feet>
+			<ammo priority="">Happy Egg</ammo>
+		</set>
+
+		<set name="samTP">
+			<head priority="">Homam Zucchetto</head>
+			<neck priority="">Merman's Gorget</neck>
+			<lear priority="">Brutal Earring</lear>
+			<rear priority="">Diabolos's Earring</rear>
+			<body priority="">Homam Corazza</body>
+			<hands priority="">Dusk Gloves</hands>
+			<lring priority="">Rajas Ring</lring>
+			<rring priority="">Sniper's Ring</rring>
+			<back priority="">Forager's Mantle</back>
+			<waist priority="">Swift Belt</waist>
+			<legs priority="">Homam Cosciales</legs>
+			<feet priority="">Drachen Greaves</feet>
+			<ammo priority="">Happy Egg</ammo>
+		</set>
+
+		<set name="WS">
+			<head priority="">Wyvern Helm</head>
+			<lear priority="">Brutal Earring</lear>
+			<rear priority="">Coral Earring</rear>
+			<body priority="">Hecatomb Harness</body>
+			<neck priority="">Spike Necklace</neck>
+			<hands priority="">Hecatomb Mittens</hands>
+			<lring priority="">Rajas Ring</lring>
+			<rring priority="">Ruby Ring</rring>
+			<back priority="">Forager's Mantle</back>
+			<waist priority="">Warwolf Belt</waist>
+			<legs priority="">Barone Cosciales</legs>
+			<feet priority="">Drachen Greaves</feet>
+			<ammo priority="">Happy Egg</ammo>
+		</set>
+		
+		<set name="WS_Multi" baseset="WS">
+			<waist priority="">Wyrm Belt</waist>
+			<neck priority="">Merman's Gorget</neck>
+			<rring priority="">Sniper's Ring</rring>
+			<rear priority="">Diabolos's Earring</rear>							
+		</set>
+				
+		<set name="Jump" baseset="WS">
+			<body priority="">Hecatomb Harness</body>
+			<legs priority="">Barone Cosciales</legs>
+			<feet priority="">Drachen Greaves</feet>
+		</set>
+		
+		<set name="Wyvern"> <!--Player maxHP for HB proc, Find HB potency overrides on line 374-->
+			<head priority="">Drachen Armet</head>
+			<neck priority="">Shield Pendant</neck>
+			<body priority="">Homam Corazza</body>
+			<waist priority="">Powerful Rope</waist>
+			<hands priority="">Dusk Gloves</hands>
+			<legs priority="">Homam Cosciales</legs>
+			<ammo priority=""></ammo>
+			<back priority="">Gigant Mantle</back>
+			<lring priority="">Silver Ring</lring>
+			<rring priority="">Bomb Queen Ring</rring>
+			<lear priority="">Shield Earring</lear>
+			<feet priority="">Drachen Greaves</feet>
+		</set>
+					
+        </sets>
+       
+	   <!--COMMANDS START HERE-->
+        <inputcommands>
+		<cmd input="/acc">
+			<if advanced="$Accuracy=0">
+				<setvar name="Accuracy" value="1" />
+					<addtochat color="57">---> TP - Accuracy: ON</addtochat>
+			</if>
+				<else>
+					<setvar name="Accuracy" value="0" />
+						<addtochat color="57">---> TP - Accuracy: OFF</addtochat>
+				</else>	
+		</cmd>
+		
+		<cmd input="/pdt">
+			<if advanced="$Physical_DT=0">
+				<setvar name="Physical_DT" value="1" />
+					<addtochat color="57">---> PDT: ON</addtochat>
+			</if>
+				<else>
+					<setvar name="Physical_DT" value="0" />
+						<addtochat color="57">---> PDT: OFF</addtochat>
+				</else>	
+		</cmd>
+
+		<cmd input="/regen">
+			<if advanced="$Passive_Regen=0">
+				<setvar name="Passive_Regen" value="1" />
+					<addtochat color="57">---> Regen: ON</addtochat>
+			</if>
+				<else>
+					<setvar name="Passive_Regen" value="0" />
+						<addtochat color="57">---> Regen: OFF</addtochat>
+				</else>
+		</cmd>
+
+		<cmd input="/vs">
+			<if advanced="$Virtue_Stone=0">
+				<setvar name="Virtue_Stone" value="1" />
+					<addtochat color="57">---> Virtue Stone: ON</addtochat>
+			</if>
+				<else>
+					<setvar name="Virtue_Stone" value="0" />
+						<addtochat color="57">---> Virtue Stone: OFF</addtochat>
+				</else>
+		</cmd>		
+        </inputcommands>
+			
+		<!--IDLE SETS / TP SETS ON ENGAGEMENT HERE, FLAGS BEING USED-->
+        <idlegear>
+		<!-- TP Gear -->
+		<if p_status="Engaged">
+			
+			<!-- Level 75 -->
+			<if p_joblevel="75">
+					<if advanced="$Physical_DT=1">
+						<equip set="PDT" />
+					</if>
+					<else>
+					<if p_subjob="SAM|WAR|NIN">
+					<equip set="samTP" />
+							<if advanced="$Accuracy=1">
+								<equip set="TP_Accuracy" />
+							</if>
+					</if>
+
+					<if p_subjob="WHM|RDM|BLU">
+					<equip set="whmTP" />
+							<if advanced="$Accuracy=1">
+								<equip set="TP_Accuracy" />
+							</if>
+					</if>
+					</else>
+					<if advanced="$Passive_Regen=1">
+						<if advanced="(%p_hpp<100%)">
+							<equip><head>President. Hairpin</head></equip>
+						</if>
+					</if>
+					<if advanced="$Virtue_Stone=1">
+						<equip><ammo>Virtue Stone</ammo></equip>
+					</if>
+					
+					<elseif advanced="$Virtue_Stone=0">
+						<equip><ammo>Tiphia Sting</ammo></equip>
+					</elseif>
+
+				</if>
+				<if p_subjob="BLM|RDM|WHM|BLU">
+					<if advanced="$Physical_DT=1">
+						<equip set="PDT" />
+						<equip><lring>Flame Ring</lring></equip>
+					</if>
+					<else>
+						<equip set="TP" />
+							<equip><rear>Ethereal Earring</rear></equip>
+							<if advanced="$TPAccuracy=1">
+								<equip set="TP_Accuracy" />
+							</if>
+					</else>
+
+					<if advanced="$Passive_Regen=1">
+						<if advanced="(%p_hpp<100%)">
+							<equip><head>President. Hairpin</head></equip>
+						</if>
+					</if>
+					<if advanced="$Virtue_Stone=1">
+						<equip><ammo>Virtue Stone</ammo></equip>
+					</if>
+				</if>
+				
+			</if>
+
+		<!-- Idle Gear -->
+		<if p_status="Idle">
+			<if p_joblevel=">=75" p_subjob="WHM">
+			<equip set="Idle" />
+				<equip><rear>Ethereal Earring</rear></equip>								
+			</if>
+
+			<if p_joblevel=">=75" p_subjob="SAM|WAR">
+				<equip set="Idle" />							
+			</if>
+		</if>
+			
+		<!-- Gear Exceptions Start here -->
+		<if eq_main="Warp Cudgel">
+			<equip lock="true"><main>Warp Cudgel</main></equip>
+		</if>
+
+		<if eq_range="Halcyon Rod">
+			<equip lock="true"><range>Halcyon Rod</range></equip>
+			<equip><ammo>Worm Lure</ammo></equip>
+			<equip><body>Fsh. Tunica</body></equip>
+			<equip><hands>Fsh. Gloves</hands></equip>
+			<equip><legs>Fisherman's Hose</legs></equip>
+			<equip><feet>Fisherman's Boots</feet></equip>
+		</if>
+		
+		<if e_area="Bastok Mines|Bastok Markets|Port Bastok|Metalworks">
+			<equip><body>Republic Aketon</body></equip>
+		</if>
+			
+		<if eq_lring="Chariot Band">
+			<equip lock="true"><lring>Chariot Band</lring></equip>
+		</if>
+		
+		<if eq_lring="Tavnazian Ring">
+			<equip lock="true"><lring>Tavnazian Ring</lring></equip>
+		</if>
+		
+		<if eq_feet="Powder Boots">
+			<equip lock="true"><feet>Powder Boots</feet></equip>
+		</if>		
+					
+        </idlegear>
+       
+	   
+        <preranged>
+		
+        </preranged>
+
+
+        <premagic>
+        </premagic>
+
+        <!--SETS FOR MAGIC HERE-->  
+        <midmagic>
+		<if ad_name="Bar*|Dia*|Erase|*na">
+			<equip set="Wyvern" />
+		</if>
+		
+		<if ad_name="Cur*|Paralyze|Slow|Stoneskin">
+			<equip set="MND" />
+		</if>
+		
+		<if ad_name="Invisible">
+			<equip><hands>Dream Mittens +1</hands></equip>
+		</if>
+		
+		<if ad_name="Sneak">
+			<equip><feet>Dream Boots +1</feet></equip>
+		</if>
+		
+		<if ad_name="Tonko*|Utsusemi*">
+			<equip set="Haste" />
+		</if>
+        </midmagic>
+ 
+		<!--JOB ABILITY SETS HERE-->
+        <jobability>
+		<if ad_name="Ancient Circle">
+			<equip><legs>Drachen Brais</legs></equip>
+		</if>
+		
+		<if ad_name="Jump">
+			<if p_joblevel="75">
+			<equip set="Jump" />
+			<equip><feet>Drachen Greaves</feet></equip>
+			</if>
+			<if e_day="darksday">
+			<equip><back>Shadow Mantle</back></equip>
+			</if>
+		</if>
+		
+		<if ad_name="High Jump">
+			<if p_joblevel="75">
+			<equip set="Jump" />
+			<equip><legs>Wyrm Brais</legs></equip>
+			<equip><waist>Wyrm Belt</waist></equip>
+			</if>
+		</if>
+		
+		<if ad_name="Spirit Link">
+			<equip set="Wyvern" />
+		</if>
+		
+		<if ad_name="Steady Wing">
+			<equip set="Wyvern" />
+		</if>
+		
+		<if ad_name="Call Wyvern">
+			<equip><body>Wyrm Mail</body></equip>
+		</if>
+        </jobability>
+		
+		<!--PET JOB ABILITY SETS HERE-->
+		<petskill>
+    
+		<if ad_name="Healing Breath*">
+            <equip set="Wyvern" />
+			<equip><head>Wyrm Armet</head></equip>
+			<equip><body>Wyvern Mail</body></equip>
+			<equip><legs>Drachen Brais</legs></equip>
+			<equip><hands>Ostreger Mitts</hands></equip>
+        </if>
+		
+		<if ad_name="Flame Breath|Frost Breath|Sand Breath|Hydro Breath|Gust Breath|Lightning Breath">
+			<equip><head>Wyrm Armet</head></equip>
+		</if>
+		</petskill>
+
+		<!--WEAPON SKILL SETS HERE-->
+        <weaponskill>
+	    <if ad_name="Double Thrust">
+			<if p_joblevel="75">
+				<equip set="WS" />
+				<equip><neck>Light Gorget</neck></equip>
+			</if>
+		</if>
+
+		<if ad_name="Penta Thrust">
+			<if p_joblevel="75">
+				<equip set="WS_Multi" />
+			</if>
+		</if>
+		
+		<if ad_name="Skewer">
+			<if p_joblevel="75">
+				<equip set="WS" />
+			</if>
+		</if>
+		
+		<if ad_name="Wheeling Thrust">
+			<if p_joblevel="75">
+				<equip set="WS" />
+				<equip><neck>Light Gorget</neck></equip>
+			</if>
+		</if>
+		
+		<if ad_name="Impulse Drive|Retribution">
+			<if p_joblevel="75">
+				<equip set="WS" />
+				<equip><neck>Shadow Gorget</neck></equip>
+			</if>
+		</if>
+        </weaponskill>
+</ashitacast>
