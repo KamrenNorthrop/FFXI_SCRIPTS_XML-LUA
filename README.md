@@ -41,3 +41,13 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
 
     -Enimity swap on flash/provoke/cure etc.
 
+**BRD LUA Includes:**
+
+     -Idle / Resting / CHR / String / Wind / Convert / Stoneskin / Cure / Utsu / Precast sets
+  
+    -Instrument swapping based on song
+  
+    -Start / Midcast set swapping
+  
+    -Haste swapping for utsu
+
