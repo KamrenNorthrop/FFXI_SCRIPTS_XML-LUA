@@ -32,6 +32,8 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
     -Swap on ability use: Rampart, Sentinel 
   
     -TP swap on engagement
+
+    -Cure cheat for both Cure 3 and 4
   
     -Idle swap on unengagement
 
