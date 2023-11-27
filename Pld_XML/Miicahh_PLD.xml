@@ -1,8 +1,6 @@
 <!--
-
-		 ---------------------------------------------
-		 --------     Miicahh 75 PLD XML 	  --------
-		 ---------------------------------------------
+	        Miicahh 75 PLD XML 	 
+		 
 
 
 This XML includes a few specific things for PLD:
@@ -52,6 +50,7 @@ This XML includes a few specific things for PLD:
         <command delay="2100">/macro book $macrobook</command>
         <command delay="3100">/macro set $macropage</command>
         <command delay="4100">/lockstyleset $lockstyleset</command>
+        <command delay="4400">/displayhead off</command>
 <!-- This codeblock will automatically change your macro book/page/lockstyle according to the job and subjob list below -->
 <!-- Change the below variable subjob abbreviations according to the subjobs you use with this profile. -->		
         <if p_mainjob="PLD"><setvar name="macrobook" value="1" /><setvar name="lockstyleset" value="1" /></if>
@@ -65,59 +64,91 @@ This XML includes a few specific things for PLD:
     <sets>
 	
 	
-<!--------------------------------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------------------------
------Change the below sets to your own, type the item EXACTLY how you see it in your inventory EX> Shura Head is "Shr.Znr.Kabuto" with no spaces. GL!-----
-----------------------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------------------------------------------------------------------> 
-<!-- Default TP Set (USE BASE--> 
-        <set name="TP">
-			<ammo>Happy Egg</ammo>
+<!--Change to your specific gear-->
+
+<!-- Default Idle Set when out of combat -->
+        <set name="Idle">
+            <sub>Koenig Shield</sub>
+            <head>Darksteel Cap +1</head>
+            <body>Dst. Harness +1</body>
+            <hands>Dst. Mittens +1</hands>
+			<legs>Crimson Cuisses</legs>
+            <feet>Dst. Leggings +1</feet>
+            <neck>Shield Pendant</neck>
+            <waist>Powerful Rope</waist>
+            <ear1>Merman's Earring</ear1>
+            <ear2>Ethereal Earring</ear2>
+            <ring1>Merman's Ring</ring1>
+            <ring2>Jelly Ring</ring2>
+            <back>Gigant Mantle</back>
+        </set>
+
+<!-- Town set to look sick on nerds --> 
+        <set name="Town">
+            <ammo></ammo>
+            <sub>Koenig Shield</sub>
 			<head>Koenig Schaller</head>
-			<body>Homam Corazza</body>
-			<hands>Dusk Gloves</hands>
+            <ear1>Cassie Earring</ear1>
+			<ear2>Ethereal Earring</ear2>
+			<body>Valor Surcoat</body>
+			<hands>Kng. Handschuhs</hands>
             <legs>Homam Cosciales</legs>
-			<feet>Gallant Leggings</feet>
+			<feet>Homam Gambieras</feet>
 			<neck>Parade Gorget</neck>
 			<waist>Swift Belt</waist>
-			<ear1>Knight's Earring</ear1>
+			<ring1>Bomb Queen Ring</ring1>
+			<ring2>Jelly Ring</ring2>
+			<back>Valor Cape</back>
+        </set>
+        
+<!-- Default TP Set (USE BASE) --> 
+        <set name="TP">
+            <sub>Koenig Shield</sub>
+			<ammo>Happy Egg</ammo>
+			<head>Homam Zucchetto</head>
+			<body>Homam Corazza</body>
+			<hands>Kng. Handschuhs</hands>
+            <legs>Homam Cosciales</legs>
+			<feet>Homam Gambieras</feet>
+			<neck>Parade Gorget</neck>
+			<waist>Swift Belt</waist>
+			<ear1>Brutal Earring</ear1>
 			<ear2>Ethereal Earring</ear2>
 			<ring1>Rajas Ring</ring1>
-			<ring2>Bomb Queen Ring</ring2>
+			<ring2>Toreador's Ring</ring2>
 			<back>Valor Cape</back>
         </set>
 		
 <!-- High Accuracy Set, /acc /acco -->
         <set name="Acc">
-			<head>Homam Zucchetto</head>
-			<body>Homam Corazza</body>
-			<hands>Dusk Gloves</hands>
-			<legs>Homam Cosciales</legs>
-			<feet>Gallant Leggings</feet>
-			<neck>Merman's Gorget</neck>
+			<head>Green Ribbon +1</head>
+			<body>Coral scale mail</body>
+			<hands>Tarasque mitts</hands>
+			<legs>Coral cuisses +1</legs>
+			<feet>Coral greaves</feet>
+			<neck>Love Torque</neck>
 			<waist>Swift Belt</waist>
-		<!--<ear1>Brutal Earring</ear1>-->
-			<ear1>Brutal Earring</ear1>
-			<ear2>Ethereal Earring</ear2>
-			<ring1>Rajas Ring</ring1>
-			<ring2>Sniper's Ring</ring2>
-			<back>Forager's Mantle</back>		
+			<ear1>Ruby Earring</ear1>
+			<ear2>Ruby Earring</ear2>
+			<ring1>Ether Ring</ring1>
+			<ring2>Jelly Ring</ring2>
+			<back>Dino Mantle</back>		
         </set>
 
 <!-- Default WS Set -->	
         <set name="WS">
-			<ammo>Happy Egg</ammo>
+			<ammo>Tiphia Sting</ammo>
 			<head>Mercenary Captain's Headgear</head>
 			<body>Hecatomb Harness</body>
 			<hands>Hecatomb Mittens</hands>
             <legs>Republic Subligar</legs>
-			<feet>Gallant Leggings</feet>
+			<feet>Hct. Leggings</feet>
 			<neck>Spike Necklace</neck>
 			<waist>Warwolf Belt</waist>
 			<ear1>Brutal Earring</ear1>
 			<ear2>Diabolos's Earring</ear2>
 			<ring1>Rajas Ring</ring1>
-			<ring2>Ruby Ring</ring2>
+			<ring2>Flame Ring</ring2>
 			<back>Forager's Mantle</back>
         </set>	
 
@@ -126,16 +157,25 @@ This XML includes a few specific things for PLD:
 			<ammo>Happy Egg</ammo>
 			<head>Aegishjalmr</head>
 			<body>Valor Surcoat</body>
-			<hands>Gallant Gauntlets</hands>
+			<hands>Valor Gauntlets</hands>
             <legs>Gallant Breeches</legs>
 			<feet>Vlr. Leggings +1</feet>
 			<neck>Harmonia's Torque</neck>
 			<waist>Warwolf Belt</waist>
 			<ear1></ear1>
 			<ear2></ear2>
-			<ring1></ring1>
-			<ring2></ring2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>		
+        </set>
+
+        <set name="HybridCure">
+            <head>Aegishjalmr</head>
+            <neck>Harmonia's torque</neck>
+            <body>Valor Surcoat</body>
+            <ear2>Hospitaler Earring</ear2>
+            <hands>Valor Gauntlets</hands>
+            <ring1>Hercules' Ring</ring1>
         </set>	
 
 <!-- Flash Set (Put all Haste pieces then fill the rest out with Enmity+ -->
@@ -143,50 +183,16 @@ This XML includes a few specific things for PLD:
 			<ammo>Happy Egg</ammo>
 			<head>Aegishjalmr</head>
 			<body>Valor Surcoat</body>
-			<hands>Gallant Gauntlets</hands>
+			<hands>Valor Gauntlets</hands>
             <legs>Gallant Breeches</legs>
 			<feet>Vlr. Leggings +1</feet>
 			<neck>Harmonia's Torque</neck>
 			<waist>Warwolf Belt</waist>
 			<ear1></ear1>
 			<ear2></ear2>
-			<ring1></ring1>
-			<ring2></ring2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>		
-        </set>
-
-<!-- Default Idle Set when out of combat -->
-        <set name="Idle">
-			<ammo></ammo>
-			<head>Koenig Schaller</head>
-			<body>Valor surcoat</body>
-			<hands>Kng. Handschuhs</hands>
-            <legs>Homam Cosciales</legs>
-			<feet>Vlr. Leggings +1</feet>
-			<neck>Parade Gorget</neck>
-			<waist>Swift Belt</waist>
-			<ear1>Knight's Earring</ear1>
-			<ear2>Ethereal Earring</ear2>
-			<ring1>Jelly Ring</ring1>
-			<ring2>Bomb Queen Ring</ring2>
-			<back>Valor Cape</back>
-        </set>
-		
-<!-- Town Set, /town /towno -->
-        <set name="Town">
-			<ammo></ammo>
-			<head>Homam Zucchetto</head>
-			<body>Valor surcoat</body>
-			<hands>Kng. Handschuhs</hands>
-            <legs>Homam Cosciales</legs>
-			<feet>Vlr. Leggings +1</feet>
-			<neck>Parade Gorget</neck>
-			<waist>Swift Belt</waist>
-			<ear1>Brutal Earring</ear1>
-			<ear2>Ethereal Earring</ear2>
-			<ring1>Jelly Ring</ring1>
-			<ring2>Bomb Queen Ring</ring2>
-			<back>Valor Cape</back>
         </set>
 		
 <!-- refresh Set, /fresh  -->
@@ -199,96 +205,67 @@ This XML includes a few specific things for PLD:
 		
 <!-- HPup Set, /HP  -->
         <set name="HP">	
+            <ammo>Happy Egg</ammo>
             <head>Koenig Schaller</head>
-            <body>Valor Surcoat</body>
-            <hands>Dusk Gloves</hands>
-			<legs>Crimson Cuisses</legs>
-            <feet>Glt. Leggings +1</feet>
-            <neck>Shield Torque</neck>
-            <waist>Hierarch Belt</waist>
+            <body>Custom Tunic</body>
+            <hands>Enkelados's Brc.</hands>
+			<legs>Homam Cosciales</legs>
+            <feet>Homam Gambieras</feet>
+            <neck>Shield Pendant</neck>
+            <waist>Powerful Rope</waist>
             <ear1>Cassie Earring</ear1>
-            <ear2>Pigeon Earring</ear2>
-            <ring1>Jelly Ring</ring1>
-            <ring2>Sattva Ring</ring2>
+            <ear2>Ethereal Earring</ear2>
+            <ring1>Bomb ring</ring1>
+            <ring2>Bomb Queen Ring</ring2>
             <back>Gigant Mantle</back>		
         </set>
 		
 <!-- PDT Set, /pdt /pdto -->
         <set name="PhysicalDefense">
-            <head>Koenig Schaller</head>
-            <body>Valor Surcoat</body>
-            <hands>Dusk Gloves</hands>
-			<legs>Crimson Cuisses</legs>
-            <feet>Glt. Leggings +1</feet>
-            <neck>Shield Torque</neck>
-            <waist>Warwolf Belt</waist>
-            <ear1>Cassie Earring</ear1>
-            <ear2>Knight's Earring</ear2>
-            <ring1>Rajas Ring</ring1>
-            <ring2>Sattva Ring</ring2>
-            <back>Boxer's Mantle</back>
+            <head>Darksteel Cap +1</head>
+            <body>Dst. Harness +1</body>
+            <hands>Dst. Mittens +1</hands>
+			<legs>Dst. Subligar +1</legs>
+            <feet>Dst. Leggings +1</feet>
+            <neck>Shield Pendant</neck>
+            <waist>Powerful Rope</waist>
+            <ear1>Merman's Earring</ear1>
+            <ear2>Ethereal Earring</ear2>
+            <ring1>Merman's Ring</ring1>
+            <ring2>Jelly Ring</ring2>
+            <back>Gigant Mantle</back>
         </set>
 		
 <!-- MDT Set, /mdt /mdto -->
         <set name="MagicDefense">
+            <head>Coral Visor</head>
+            <body>Coral Scale Mail</body>
+            <hands>Enkelados's Brc.</hands>
+			<legs>Coral Cuisses +1</legs>
+            <feet>Coral Greaves</feet>
+            <neck>Shield Pendant</neck>
+            <waist>Powerful Rope</waist>
             <ear1>Merman's Earring</ear1>
             <ear2>Merman's Earring</ear2>
-			<head>Green Ribbon +1</head>			
-			<neck>Jeweled Collar</neck>
-			<ring1>Merman's Ring</ring1>
-			<ring2>Merman's Ring</ring2>
-			<back>Resentment Cape</back>
-			<body>Valor Surcoat</body>
-            <feet>Crimson Greaves</feet>	
-            <ring2>Sattva Ring</ring2>			
+            <ring1>Merman's Ring</ring1>
+            <ring2>Merman's Ring</ring2>
+            <back>Resentment Cape</back>				
         </set>	
-		
-<!-- Vorpal/Swift WS Set (use Soil Gorget) -->	
-        <set name="Multihit">
-			<head>Homam Zucchetto</head>
-			<body>Assault Jerkin</body>
-			<hands>Hecatomb Mittens</hands>
-            <legs>Adaman Breeches</legs>
-			<feet>Hct. Leggings</feet>
-			<neck>Peacock Charm</neck>
-			<waist>Life Belt</waist>
-			<ear1>Merman's Earring</ear1>
-			<ear2>Fowling Earring</ear2>
-			<ring1>Ruby Ring</ring1>
-			<ring2>Ruby Ring</ring2>
-			<back>Forager's Mantle</back>
-        </set>
-		
-<!-- Spirits Within WS Set -->	
-        <set name="Spirits">
-			<head>Koenig Schaller</head>
-			<body>Valor Surcoat</body>
-			<hands>Dusk Gloves</hands>
-            <legs>Adaman Breeches</legs>
-			<feet>Glt. Leggings +1</feet>
-			<neck>Shield Torque</neck>
-			<waist>Warwolf Belt</waist>
-			<ear1>Cassie Earring</ear1>
-			<ear2>Pigeon Earring</ear2>
-			<ring1>Rajas Ring</ring1>
-			<ring2>Sattva Ring</ring2>
-			<back>Gigant Mantle</back>
-        </set>
 		
 <!-- Cure Set (USE ENMITYCURE)--> 
         <set name="Cure">
-		<ammo>Happy Egg</ammo>
+		    <ammo>Happy Egg</ammo>
 			<head>Aegishjalmr</head>
 			<body>Valor Surcoat</body>
-			<hands>Gallant Gauntlets</hands>
+			<hands>Valor Gauntlets</hands>
             <legs>Gallant Breeches</legs>
 			<feet>Vlr. Leggings +1</feet>
 			<neck>Harmonia's Torque</neck>
 			<waist>Warwolf Belt</waist>
 			<ear1>Hospitaler Earring</ear1>
 			<ear2></ear2>
-			<ring1></ring1>
-			<ring2></ring2>
+			<ring1>Bomb Queen Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>	
         </set>
 
@@ -304,8 +281,8 @@ This XML includes a few specific things for PLD:
 			<waist>Swift Belt</waist>
 			<ear1>Brutal Earring</ear1>
 			<ear2>Ethereal Earring</ear2>
-			<ring1>Rajas Ring</ring1>
-			<ring2>Bomb Queen Ring</ring2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>
         </set>				
 		
@@ -313,11 +290,9 @@ This XML includes a few specific things for PLD:
         <set name="UtsuActive">
 			<body>Royal Cloak</body>
 			<neck>Parade Gorget</neck>
-
-	
         </set>	
 		
-<!-- holy Set (moldy duh -->
+<!-- holy Set (moldy duh) -->
         <set name="Holy">
 			<neck>Divine Torque</neck>
 			<ear1>Moldavite Earring</ear1>	
@@ -327,35 +302,16 @@ This XML includes a few specific things for PLD:
         <set name="Haste">
             <head>Homam Zucchetto</head>
 			<hands>Dusk Gloves</hands>
-			<body>Valor Surcoat</body>
             <waist>Swift Belt</waist>
-			<ear2>Loquac. Earring</ear1>
+            <legs>Homam Cosciales</legs>
+			<feet>Homam Gambieras</feet>
         </set>
 		
-<!-- Will autoequip Crimson Cuisses when you move -->
+<!-- Will autoequip Crimson Cuisses when you move
         <set name="Running">
             <legs>Crimson Cuisses</legs>
-			<hands>Adaman Gauntlets</hands>
-        </set>
-		
-
-<!-- Ranged Sets -->
-		<set name="Preshot">
-		</set>	      
-		<set name="Ranged">
-			<head>Optical Hat</head>
-			<body>Akinji Peti</body>
-			<hands>Irn.Msk. Gauntlets</hands>
-			<legs>Jaridah Salvars</legs>
-			<feet>Irn.Msk. Sabatons</feet>
-			<neck>Peacock Charm</neck>
-			<waist>Volant Belt</waist>
-			<ear1>Altdorf's Earring</ear1>
-			<ear2>Wilhelm's Earring</ear2>
-			<ring1>Jalzahn's Ring</ring1>
-			<ring2>Scorpion Ring +1</ring2>
-			<back>Amemet Mantle +1</back>
-		</set>		
+			<hands>Kng. Handschuhs</hands>
+        </set>	-->
 
 <!-- Fire Resist Set for Cerberus, /fr /fro -->
         <set name="FireResist">    
@@ -363,15 +319,15 @@ This XML includes a few specific things for PLD:
 			<sub>Nms. Shield +1</sub>
 			<ammo>Happy Egg</ammo>
 			<head>Green Ribbon +1</head>
-			<body>Valor Surcoat</body>
+			<body>Republic Harness</body>
 			<hands>Tarasque Mitts</hands>
 			<legs>Crimson Cuisses</legs>
-			<feet>Glt. Leggings +1</feet>
+			<feet>Power Sandals</feet>
 			<neck>Jeweled Collar</neck>
 			<waist>Water Belt</waist>
 			<ear1>Ruby Earring</ear1>
 			<ear2>Ruby Earring</ear2>
-			<ring1>Ruby Ring</ring1>
+			<ring1>Malflame ring</ring1>
 			<ring2>Ruby Ring</ring2>
 			<back>Dino Mantle</back>		
         </set>		
@@ -379,20 +335,20 @@ This XML includes a few specific things for PLD:
 <!-- Ice Resist for Jormy, Ice -->
         <set name="IceResist">    
 			<main>Hrotti</main>
-			<sub>Nms. Shield +1</sub>
+			<sub>Ice Shield</sub>
 			<ammo>Happy Egg</ammo>
 			<head>Green Ribbon +1</head>
-			<body>Northern Jerkin</body>
-			<hands>Tarasque Mitts</hands>
-			<legs>Crimson Cuisses</legs>
+			<body>Feral Jerkin</body>
+			<hands>Feral Gloves</hands>
+			<legs>Feral Trousers</legs>
 			<feet>Crimson Greaves</feet>
 			<neck>Jeweled Collar</neck>
 			<waist>Fire Belt</waist>
 			<ear1>Ruby Earring</ear1>
 			<ear2>Ruby Earring</ear2>
-			<ring1>Merman's Ring</ring1>
-			<ring2>Sattva Ring</ring2>
-			<back>Ram Mantle +1</back>		
+			<ring1>Diamond Ring</ring1>
+			<ring2>Malfrost Ring</ring2>
+			<back>Ram Mantle</back>		
         </set>		
 		
 <!-- Earth Resist  -->
@@ -416,6 +372,21 @@ This XML includes a few specific things for PLD:
 				
 <!-- Lightning Resist Set for Khimaira, /lr /lro -->
         <set name="LightningResist">
+            <main></main>
+			<sub>Nms. Shield +1</sub>
+			<range>Lightning Bow +1</range>
+			<head>Green Ribbon +1</head>
+			<body>Dst. Harness +1</body>
+			<hands>Dst. Mittens +1</hands>
+			<legs>Crimson Cuisses</legs>
+			<feet>Dst. Leggings +1</feet>
+			<neck>Jeweled Collar</neck>
+			<waist>Earth Belt</waist>
+			<ear1>Arete Del Sol</ear1>
+			<ear2>Arete Del Sol</ear2>
+			<ring1>Spinel Ring</ring1>
+			<ring2>Spinel Ring</ring2>
+			<back>Gaia Mantle</back>
         </set>	
 		
 <!-- Cure Cheat Sets -->	
@@ -423,13 +394,13 @@ This XML includes a few specific things for PLD:
     <lear>Hospitaler Earring</lear>
 </set>
 <set name="HPUpIV" baseset="Enmity"> <!-- END CAST CURE 4 CHEAT -->
-    <body>Creed Cuirass +2</body>
-    <lring>Odium Ring</lring>
+    <body>Custom Tunic</body>
+    <lring>Bomb Queen Ring</lring>
     <rring>Hercules' Ring</rring>
-    <head>Hero's Galea</head>
-    <back>Aenotherus Mantle</back>
-    <waist>Creed Baudrier</waist>
-    <legs>Creed Cuisses +2</legs>
+    <head>Koenig Schaller</head>
+    <back>Gigant Mantle</back>
+    <waist></waist>
+    <legs>Homam Cosciales</legs>
     <lear>Hospitaler Earring</lear>
 </set>
 <set name="HPDownIV" > <!-- BEGIN CAST CURE 4 CHEAT -->
@@ -444,8 +415,8 @@ This XML includes a few specific things for PLD:
 	<back>Boxer's Mantle</back>
 	<body>Assault Jerkin</body>
 	<hands>Adaman gauntlets</hands>
-	<lear>Loquac. Earring</lear>
-	<rear>Knight's Earring</rear>
+	<lear>Brutal Earring</lear>
+	<rear>Ethereal Earring</rear>
 </set>
 <set name="HPUpIII" baseset="Enmity"> <!-- END CAST CURE 3 CHEAT -->
     <head>Hero's Galea</head>
@@ -461,17 +432,9 @@ This XML includes a few specific things for PLD:
     </sets>
 	
 	
-<!-----------------------------------------------------
--------------------------------------------------------
----------------- IMPORTANT CODE BELOW ----------------- 
---- DO NOT TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING! ---
--------------------------------------------------------
------------------------------------------------------->
-	
+<!-- IMPORTANT CODE BELOW DO NOT TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING! -->
 	
     <inputcommands>
-	
-	
 		<cmd input="/allo">
             <setvar name="PhysicalDefense" value="0" />
             <setvar name="MagicDefense" value="0" />
@@ -671,7 +634,7 @@ This XML includes a few specific things for PLD:
             </if>
         </cmd>	
         <cmd input="/Town">
-			<setvar name="HP" value="0" />
+			<setvar name="HP" valuep_status="0" />
             <setvar name="Acc" value="0" />
             <setvar name="PhysicalDefense" value="0" />
             <setvar name="MagicDefense" value="0" />
@@ -682,7 +645,7 @@ This XML includes a few specific things for PLD:
             <setvar name="UtsuActive" value="0" />			
             <if advanced="$Town=0">
                 <setvar name="Town" value="1" />
-                <addtochat color="100">Town Off Set Equipped.</addtochat>
+                <addtochat color="100">Town Set Equipped.</addtochat>
             </if>
         </cmd>
         <cmd input="/Towno">
@@ -694,9 +657,6 @@ This XML includes a few specific things for PLD:
     </inputcommands>
     <idlegear>
 				<equip set="Idle" />
-				<if e_area="Ru'Lude*|Nashmau|Tavnazian Safehold|Port*|Bastok*|Windurst*|*San d'Oria|*Jeuno|*Whitegate|*Adoulin|Selbina|Mhaura|Norg">
-					<equip set="Town" />
-				</if>
         <if p_status="idle">
             <equip set="Idle" />
 				<if eq_lring="Empress Band">		
@@ -724,6 +684,9 @@ This XML includes a few specific things for PLD:
 					<head>Reraise Hairpin</head> 
 					</equip>
 				</if>
+                <if eq_range="Lightning Bow +1">
+                    <equip lock="true"><range>Lightning Bow +1</range></equip>
+                </if>
 				<if eq_feet="Powder Boots">		
 					<equip lock="true">
 					<feet>Powder Boots</feet> 
@@ -752,9 +715,14 @@ This XML includes a few specific things for PLD:
                 </if>	
 				<if p_hpp="<50">
 					<equip lock="true">
-					<lring>Hercules' Ring</lring>  
+					<rring>Hercules' Ring</rring>  
 					</equip>
-				</if>					
+				</if>
+                <if p_hpp=">84">
+                    <equip lock="true">
+                    <neck>Parade Gorget</neck>
+                    </equip>
+                </if>					
                 <if advanced="$MagicDefense=1">
                     <equip set="MagicDefense" />
                 </if>
@@ -825,9 +793,14 @@ This XML includes a few specific things for PLD:
 				</if>	
 				<if p_hpp="<50">
 					<equip lock="true">
-					<lring>Hercules' Ring</lring>  
+					<rring>Hercules' Ring</rring>  
 					</equip>
-				</if>								
+				</if>
+                <if p_hpp=">84">
+                    <equip lock="true">
+                    <neck>Parade Gorget</neck>
+                    </equip>
+                </if>								
 		</if>                     
     </idlegear>
 	<preranged>
@@ -851,9 +824,18 @@ This XML includes a few specific things for PLD:
 		<if ad_name="Holy">
             <equip set="Holy" />
 		</if>		
-		<if ad_name="Cure*">
-			<equip set="Cure" />
+		<if ad_name="Cure III">
+            <equip set="Cure" />
+            <command>/acco</command>
 		</if>
+        <if ad_name="Cure IV">
+            <if advanced="$HP=1">
+            <equip set="HybridCure" />
+            <command>/hpo</command>
+            <command>/acco</command>
+            </if>
+                <else><equip set="Cure" /></else>
+        </if>
 		
 		<if ad_name="Utsusemi: Ichi">
 			<equip set="Utsu"/>
