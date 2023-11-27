@@ -13,13 +13,20 @@
 		<command delay="2100">/macro book $macrobook</command>
         <command delay="3100">/macro set $macropage</command>
         <command delay="4100">/lockstyleset $lockstyleset</command>
+		<command delay="5100">/displayhead on</command>
 		<if p_mainjob="DRG"><setvar name="macrobook" value="3" /><setvar name="lockstyleset" value="21" /></if>
         <if p_subjob="WHM"><setvar name="macrobook" value="3" /></if>
 		<if p_subjob="WHM"><setvar name="macropage" value="1" /></if> 
-		<if p_subjob="SAM"><setvar name="macrobook" value="5" /></if>
+		<if p_subjob="SAM"><setvar name="macrobook" value="4" /></if>
 		<if p_subjob="SAM"><setvar name="macropage" value="1" /></if>
+		<if p_subjob="RDM"><setvar name="macrobook" value="3" /></if>
+		<if p_subjob="RDM"><setvar name="macropage" value="1" /></if> 
 		<if p_subjob="WAR"><setvar name="macrobook" value="6" /></if>
-		<if p_subjob="WAR"><setvar name="macropage" value="1" /></if>  
+		<if p_subjob="WAR"><setvar name="macropage" value="1" /></if> 
+		<if p_subjob="NIN"><setvar name="macrobook" value="5" /></if>
+		<if p_subjob="NIN"><setvar name="macropage" value="1" /></if> 
+		<if p_subjob="THF"><setvar name="macrobook" value="7" /></if>
+		<if p_subjob="THF"><setvar name="macropage" value="1" /></if>
 		</init>
 		
 		<!--FLAG DECLARATIONS-->
@@ -28,33 +35,33 @@
 			<var name="Passive_Regen">0</var>
 			<var name="Accuracy">0</var>
 			<var name="Virtue_Stone">0</var>
+			<var name ="Town">0</var>
         </variables>	
 		
 		<!--SETS START HERE-->
         <sets>
 		<set name="Idle">
-			<head priority="">Homam Zucchetto</head>
-			<neck priority="">Merman's Gorget</neck>
-			<lear priority="">Brutal Earring</lear>
-			<rear priority="">Coral Earring</rear>
-			<body priority="">Homam Corazza</body>
-			<hands priority="">Gavial Fng. Gnt.</hands>
-			<lring priority="">Rajas Ring</lring>
-			<rring priority="">Jelly Ring</rring>
-			<back priority="">Forager's Mantle</back>
+			<head priority="">Darksteel Cap +1</head>
+			<neck priority="">Love Torque</neck>
+			<lear priority="">Merman's Earring</lear>
+			<rear priority="">Merman's Earring</rear>
+			<body priority="">Dst. Harness +1</body>
+			<hands priority="">Dst. Mittens +1</hands>
+			<lring priority="">Merman's Ring</lring>
+			<rring priority="">Merman's Ring</rring>
+			<back priority="">Gigant Mantle</back>
 			<waist priority="">Swift Belt</waist>
-			<legs priority="">Gavial Cuisses</legs>
-			<feet priority="">Gavial Greaves</feet>
-			<ammo priority="">Happy Egg</ammo>
+			<legs priority="">Crimson Cuisses</legs>
+			<feet priority="">Gavial Greaves +1</feet>
+			<ammo priority="">Tiphia Sting</ammo>
 		</set>
 		
 		<set name="Haste" baseset="PDT">
-			<head priority="">Homam Zucchetto</head>
+			<head priority="">Ace's Helm</head>
 			<hands priority="">Dusk Gloves</hands>
 			<waist priority="">Swift Belt</waist>
-			<back priority="">Shadow Mantle</back>
 			<legs priority="">Homam Cosciales</legs>
-			<feet priority="">Dusk Ledelsens</feet>
+			<feet priority="">Homam Gambieras</feet>
 		</set>
 		
 		<set name="MND" baseset="Idle">
@@ -65,84 +72,81 @@
 		</set>
 		
 		<set name="PDT" baseset="Idle">
-			<lring priority=""></lring>
-			<back priority=""></back>
+			<lring priority="">Jelly Ring</lring>
+			<legs priority="">Dst. Subligar +1</legs>
 		</set>
 		
 		<set name="whmTP">
-			<head priority="">Homam Zucchetto</head>
-			<neck priority="">Merman's Gorget</neck>
+			<head priority="">Ace's Helm</head>
+			<neck priority="">Love Torque</neck>
 			<lear priority="">Brutal Earring</lear>
 			<rear priority="">Ethereal Earring</rear>
 			<body priority="">Homam Corazza</body>
 			<hands priority="">Dusk Gloves</hands>
 			<lring priority="">Rajas Ring</lring>
-			<rring priority="">Sniper's Ring</rring>
+			<rring priority="">Toreador's Ring</rring>
 			<back priority="">Forager's Mantle</back>
 			<waist priority="">Swift Belt</waist>
 			<legs priority="">Homam Cosciales</legs>
-			<feet priority="">Drachen Greaves</feet>
-			<ammo priority="">Happy Egg</ammo>
+			<feet priority="">Homam Gambieras</feet>
+			<ammo priority="">Tiphia Sting</ammo>
 		</set>
 
 		<set name="samTP">
-			<head priority="">Homam Zucchetto</head>
-			<neck priority="">Merman's Gorget</neck>
+			<head priority="">Ace's Helm</head>
+			<neck priority="">Love Torque</neck>
 			<lear priority="">Brutal Earring</lear>
-			<rear priority="">Diabolos's Earring</rear>
+			<rear priority="">Beastly Earring</rear>
 			<body priority="">Homam Corazza</body>
 			<hands priority="">Dusk Gloves</hands>
 			<lring priority="">Rajas Ring</lring>
-			<rring priority="">Sniper's Ring</rring>
+			<rring priority="">Toreador's Ring</rring>
 			<back priority="">Forager's Mantle</back>
 			<waist priority="">Swift Belt</waist>
 			<legs priority="">Homam Cosciales</legs>
-			<feet priority="">Drachen Greaves</feet>
-			<ammo priority="">Happy Egg</ammo>
+			<feet priority="">Homam Gambieras</feet>
+			<ammo priority="">Tiphia Sting</ammo>
 		</set>
 
 		<set name="WS">
-			<head priority="">Wyvern Helm</head>
-			<lear priority="">Brutal Earring</lear>
-			<rear priority="">Coral Earring</rear>
+			<!--<head priority="">Wyvern Helm</head>-->
+			<head priority="">Wym. Armet +1</head>
+			<ear2 priority="">Beastly Earring</ear2>
 			<body priority="">Hecatomb Harness</body>
-			<neck priority="">Spike Necklace</neck>
 			<hands priority="">Hecatomb Mittens</hands>
 			<lring priority="">Rajas Ring</lring>
-			<rring priority="">Ruby Ring</rring>
+			<rring priority="">Flame Ring</rring>
 			<back priority="">Forager's Mantle</back>
 			<waist priority="">Warwolf Belt</waist>
 			<legs priority="">Barone Cosciales</legs>
-			<feet priority="">Drachen Greaves</feet>
-			<ammo priority="">Happy Egg</ammo>
+			<feet priority="">Hct. Leggings</feet>
+			<ammo priority="">Tiphia Sting</ammo>
 		</set>
 		
 		<set name="WS_Multi" baseset="WS">
-			<waist priority="">Wyrm Belt</waist>
-			<neck priority="">Merman's Gorget</neck>
-			<rring priority="">Sniper's Ring</rring>
-			<rear priority="">Diabolos's Earring</rear>							
+			<!--Uncomment if you need more ACC-->
+			<!--<waist priority="">Wyrm Belt</waist>-->				
 		</set>
 				
-		<set name="Jump" baseset="WS">
-			<body priority="">Hecatomb Harness</body>
-			<legs priority="">Barone Cosciales</legs>
-			<feet priority="">Drachen Greaves</feet>
+		<set name="Jump" baseset="samTP">
+			<hands priority="">Hecatomb Mittens</hands>
+			<waist priority="">Wyrm Belt</waist>
 		</set>
 		
 		<set name="Wyvern"> <!--Player maxHP for HB proc, Find HB potency overrides on line 374-->
 			<head priority="">Drachen Armet</head>
 			<neck priority="">Shield Pendant</neck>
-			<body priority="">Homam Corazza</body>
+			<body priority="">Custom Tunic</body>
 			<waist priority="">Powerful Rope</waist>
-			<hands priority="">Dusk Gloves</hands>
+			<hands priority="">Enkelados's Brc.</hands>
 			<legs priority="">Homam Cosciales</legs>
-			<ammo priority=""></ammo>
+			<ammo priority="">Happy Egg</ammo>
 			<back priority="">Gigant Mantle</back>
-			<lring priority="">Silver Ring</lring>
-			<rring priority="">Bomb Queen Ring</rring>
-			<lear priority="">Shield Earring</lear>
-			<feet priority="">Drachen Greaves</feet>
+			<lring priority="">Bomb Queen Ring</lring>
+			<rring priority="">Bomb ring</rring>
+			<lear priority="">Cassie Earring</lear>
+			<rear priority="">BloodBead Earring</rear>
+			<feet priority="">Homam Gambieras</feet>
 		</set>
 					
         </sets>
@@ -157,6 +161,18 @@
 				<else>
 					<setvar name="Accuracy" value="0" />
 						<addtochat color="57">---> TP - Accuracy: OFF</addtochat>
+				</else>	
+		</cmd>
+
+		<cmd input="/town">
+			<if advanced="$Town=0">
+				<setvar name="Town" value="1" />
+					<addtochat color="57">---> TP - Town: ON</addtochat>
+			</if>
+				<else>
+					<setvar name="Town" value="0" />
+						<addtochat color="57">---> TP - Town: OFF</addtochat>
+
 				</else>	
 		</cmd>
 		
@@ -180,23 +196,13 @@
 					<setvar name="Passive_Regen" value="0" />
 						<addtochat color="57">---> Regen: OFF</addtochat>
 				</else>
-		</cmd>
-
-		<cmd input="/vs">
-			<if advanced="$Virtue_Stone=0">
-				<setvar name="Virtue_Stone" value="1" />
-					<addtochat color="57">---> Virtue Stone: ON</addtochat>
-			</if>
-				<else>
-					<setvar name="Virtue_Stone" value="0" />
-						<addtochat color="57">---> Virtue Stone: OFF</addtochat>
-				</else>
 		</cmd>		
         </inputcommands>
 			
 		<!--IDLE SETS / TP SETS ON ENGAGEMENT HERE, FLAGS BEING USED-->
         <idlegear>
 		<!-- TP Gear -->
+
 		<if p_status="Engaged">
 			
 			<!-- Level 75 -->
@@ -205,7 +211,7 @@
 						<equip set="PDT" />
 					</if>
 					<else>
-					<if p_subjob="SAM|WAR|NIN">
+					<if p_subjob="SAM|WAR|NIN|THF">
 					<equip set="samTP" />
 							<if advanced="$Accuracy=1">
 								<equip set="TP_Accuracy" />
@@ -224,19 +230,10 @@
 							<equip><head>President. Hairpin</head></equip>
 						</if>
 					</if>
-					<if advanced="$Virtue_Stone=1">
-						<equip><ammo>Virtue Stone</ammo></equip>
-					</if>
-					
-					<elseif advanced="$Virtue_Stone=0">
-						<equip><ammo>Tiphia Sting</ammo></equip>
-					</elseif>
-
 				</if>
 				<if p_subjob="BLM|RDM|WHM|BLU">
 					<if advanced="$Physical_DT=1">
 						<equip set="PDT" />
-						<equip><lring>Flame Ring</lring></equip>
 					</if>
 					<else>
 						<equip set="TP" />
@@ -251,36 +248,53 @@
 							<equip><head>President. Hairpin</head></equip>
 						</if>
 					</if>
-					<if advanced="$Virtue_Stone=1">
-						<equip><ammo>Virtue Stone</ammo></equip>
-					</if>
 				</if>
 				
 			</if>
 
 		<!-- Idle Gear -->
 		<if p_status="Idle">
-			<if p_joblevel=">=75" p_subjob="WHM">
+			<if p_joblevel=">=75" p_subjob="WHM|RDM|BLU">
 			<equip set="Idle" />
 				<equip><rear>Ethereal Earring</rear></equip>								
 			</if>
 
-			<if p_joblevel=">=75" p_subjob="SAM|WAR">
+			<if p_joblevel=">=75" p_subjob="SAM|WAR|NIN|THF">
 				<equip set="Idle" />							
 			</if>
 		</if>
-			
+
+		<if p_status="Resting">
+			<if p_joblevel=">=75">
+			<equip set="Idle" />
+				<equip><body>Wyvern Mail</body></equip>
+				<equip><feet>Wyrm Greaves</feet></equip>
+			</if>
+		</if>
+<!--
+		<if p_ismoving="true" p_subjob="WHM">
+				<equip set="Idle" />
+				<equip><legs>Crimson Cuisses</legs></equip>
+				<equip><rear>Ethereal Earring</rear></equip>								
+		</if>
+
+		<if p_ismoving="true" p_subjob="WHM">
+			<equip set="Idle" />
+			<equip><legs>Crimson Cuisses</legs></equip>
+		</if> -->
+		
 		<!-- Gear Exceptions Start here -->
 		<if eq_main="Warp Cudgel">
 			<equip lock="true"><main>Warp Cudgel</main></equip>
 		</if>
 
-		<if eq_range="Halcyon Rod">
-			<equip lock="true"><range>Halcyon Rod</range></equip>
-			<equip><ammo>Worm Lure</ammo></equip>
+		<if eq_range="Lu Shang's F. Rod">
+			<equip lock="true"><range>Lu Shang's F. Rod</range></equip>
+			<equip><ammo>Fly Lure</ammo></equip>
 			<equip><body>Fsh. Tunica</body></equip>
 			<equip><hands>Fsh. Gloves</hands></equip>
 			<equip><legs>Fisherman's Hose</legs></equip>
+			<equip><ring1>Pelican Ring</ring1></equip>
 			<equip><feet>Fisherman's Boots</feet></equip>
 		</if>
 		
@@ -337,7 +351,7 @@
 		<!--JOB ABILITY SETS HERE-->
         <jobability>
 		<if ad_name="Ancient Circle">
-			<equip><legs>Drachen Brais</legs></equip>
+			<equip><legs>Drachen Brais +1</legs></equip>
 		</if>
 		
 		<if ad_name="Jump">
@@ -355,6 +369,8 @@
 			<equip set="Jump" />
 			<equip><legs>Wyrm Brais</legs></equip>
 			<equip><waist>Wyrm Belt</waist></equip>
+			<!--<equip><ring2>Vaulter's Ring</ring2></equip> -->
+			<equip><hands>Hecatomb Mittens</hands></equip>
 			</if>
 		</if>
 		
@@ -376,14 +392,14 @@
     
 		<if ad_name="Healing Breath*">
             <equip set="Wyvern" />
-			<equip><head>Wyrm Armet</head></equip>
+			<equip><head>Wym. Armet +1</head></equip>
 			<equip><body>Wyvern Mail</body></equip>
-			<equip><legs>Drachen Brais</legs></equip>
+			<equip><legs>Drn. Brais +1</legs></equip>
 			<equip><hands>Ostreger Mitts</hands></equip>
         </if>
 		
 		<if ad_name="Flame Breath|Frost Breath|Sand Breath|Hydro Breath|Gust Breath|Lightning Breath">
-			<equip><head>Wyrm Armet</head></equip>
+			<equip><head>Wym. Armet +1</head></equip>
 		</if>
 		</petskill>
 
@@ -399,6 +415,9 @@
 		<if ad_name="Penta Thrust">
 			<if p_joblevel="75">
 				<equip set="WS_Multi" />
+				<!--<equip><head>Ace's Helm</head></equip> -->
+				<equip><head>Wym. Armet +1</head></equip>
+				<equip><neck>Love Torque</neck></equip>
 			</if>
 		</if>
 		
