@@ -16,10 +16,12 @@
 		<command delay="5100">/displayhead on</command>
 		<if p_mainjob="DRG"><setvar name="macrobook" value="3" /><setvar name="lockstyleset" value="21" /></if>
         <if p_subjob="WHM"><setvar name="macrobook" value="3" /></if>
-		<if p_subjob="WHM"><setvar name="macropage" value="1" /></if> 
-		<if p_subjob="SAM"><setvar name="macrobook" value="4" /></if>
+		<if p_subjob="WHM"><setvar name="macropage" value="1" /></if>
+		<if p_subjob="BLM"><setvar name="macrobook" value="3" /></if>
+		<if p_subjob="BLM"><setvar name="macropage" value="1" /></if>
+		<if p_subjob="SAM"><setvar name="macrobook" value="5" /></if>
 		<if p_subjob="SAM"><setvar name="macropage" value="1" /></if>
-		<if p_subjob="RDM"><setvar name="macrobook" value="3" /></if>
+		<if p_subjob="RDM"><setvar name="macrobook" value="4" /></if>
 		<if p_subjob="RDM"><setvar name="macropage" value="1" /></if> 
 		<if p_subjob="WAR"><setvar name="macrobook" value="6" /></if>
 		<if p_subjob="WAR"><setvar name="macropage" value="1" /></if> 
@@ -41,6 +43,7 @@
 		<!--SETS START HERE-->
         <sets>
 		<set name="Idle">
+			<ammo priority="">Happy Egg</ammo>
 			<head priority="">Darksteel Cap +1</head>
 			<neck priority="">Love Torque</neck>
 			<lear priority="">Merman's Earring</lear>
@@ -52,13 +55,12 @@
 			<back priority="">Gigant Mantle</back>
 			<waist priority="">Swift Belt</waist>
 			<legs priority="">Crimson Cuisses</legs>
-			<feet priority="">Gavial Greaves +1</feet>
-			<ammo priority="">Tiphia Sting</ammo>
+			<feet priority="">Dst. Leggings +1</feet>
 		</set>
 		
 		<set name="Haste" baseset="PDT">
 			<head priority="">Ace's Helm</head>
-			<hands priority="">Dusk Gloves</hands>
+			<hands priority="">Homam Manopolas</hands>
 			<waist priority="">Swift Belt</waist>
 			<legs priority="">Homam Cosciales</legs>
 			<feet priority="">Homam Gambieras</feet>
@@ -82,7 +84,7 @@
 			<lear priority="">Brutal Earring</lear>
 			<rear priority="">Ethereal Earring</rear>
 			<body priority="">Homam Corazza</body>
-			<hands priority="">Dusk Gloves</hands>
+			<hands priority="">Homam Manopolas</hands>
 			<lring priority="">Rajas Ring</lring>
 			<rring priority="">Toreador's Ring</rring>
 			<back priority="">Forager's Mantle</back>
@@ -98,7 +100,7 @@
 			<lear priority="">Brutal Earring</lear>
 			<rear priority="">Beastly Earring</rear>
 			<body priority="">Homam Corazza</body>
-			<hands priority="">Dusk Gloves</hands>
+			<hands priority="">Homam Manopolas</hands>
 			<lring priority="">Rajas Ring</lring>
 			<rring priority="">Toreador's Ring</rring>
 			<back priority="">Forager's Mantle</back>
@@ -130,6 +132,7 @@
 				
 		<set name="Jump" baseset="samTP">
 			<hands priority="">Hecatomb Mittens</hands>
+			<legs>Barone Cosciales</legs>
 			<waist priority="">Wyrm Belt</waist>
 		</set>
 		
@@ -145,7 +148,7 @@
 			<lring priority="">Bomb Queen Ring</lring>
 			<rring priority="">Bomb ring</rring>
 			<lear priority="">Cassie Earring</lear>
-			<rear priority="">BloodBead Earring</rear>
+			<rear priority="">Loquac. Earring</rear>
 			<feet priority="">Homam Gambieras</feet>
 		</set>
 					
@@ -218,7 +221,7 @@
 							</if>
 					</if>
 
-					<if p_subjob="WHM|RDM|BLU">
+					<if p_subjob="WHM|RDM|BLU|BLM">
 					<equip set="whmTP" />
 							<if advanced="$Accuracy=1">
 								<equip set="TP_Accuracy" />
@@ -254,7 +257,7 @@
 
 		<!-- Idle Gear -->
 		<if p_status="Idle">
-			<if p_joblevel=">=75" p_subjob="WHM|RDM|BLU">
+			<if p_joblevel=">=75" p_subjob="WHM|RDM|BLU|BLM">
 			<equip set="Idle" />
 				<equip><rear>Ethereal Earring</rear></equip>								
 			</if>
@@ -288,14 +291,15 @@
 			<equip lock="true"><main>Warp Cudgel</main></equip>
 		</if>
 
-		<if eq_range="Lu Shang's F. Rod">
-			<equip lock="true"><range>Lu Shang's F. Rod</range></equip>
-			<equip><ammo>Fly Lure</ammo></equip>
-			<equip><body>Fsh. Tunica</body></equip>
-			<equip><hands>Fsh. Gloves</hands></equip>
-			<equip><legs>Fisherman's Hose</legs></equip>
-			<equip><ring1>Pelican Ring</ring1></equip>
-			<equip><feet>Fisherman's Boots</feet></equip>
+		<if eq_range="Ebisu Fishing Rod">
+			<equip lock="true"><range>Ebisu Fishing Rod</range></equip>
+			<equip><ammo>Shrimp Lure</ammo></equip>
+			<equip><body>Angler's Tunica</body></equip>
+			<equip><hands>Angler's Gloves</hands></equip>
+			<equip><legs>Angler's Hose</legs></equip>
+			<equip><ring1>Albatross Ring</ring1></equip>
+			<equip><waist>Fisherman's Belt</waist></equip>
+			<equip><feet>Waders</feet></equip>
 		</if>
 		
 		<if e_area="Bastok Mines|Bastok Markets|Port Bastok|Metalworks">
@@ -327,7 +331,7 @@
 
         <!--SETS FOR MAGIC HERE-->  
         <midmagic>
-		<if ad_name="Bar*|Dia*|Erase|*na">
+		<if ad_name="Bar*|Dia*|Erase|*na|Poison">
 			<equip set="Wyvern" />
 		</if>
 		
@@ -415,8 +419,8 @@
 		<if ad_name="Penta Thrust">
 			<if p_joblevel="75">
 				<equip set="WS_Multi" />
-				<!--<equip><head>Ace's Helm</head></equip> -->
 				<equip><head>Wym. Armet +1</head></equip>
+				<!--<equip><head>Wym. Armet +1</head></equip> -->
 				<equip><neck>Love Torque</neck></equip>
 			</if>
 		</if>
