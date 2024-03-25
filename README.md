@@ -37,13 +37,22 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
 
     -fight command for TP set, ref for vermy for idle refresh
 
-    -Cure cheat for both Cure 3 and 4 utilizing sets "PrecheatIII" and "PreCheatIV".
+    -Cure cheat for both Cure 3 and 4 utilizing sets "PrecheatIII" and "PreCheatIV"
 
     -Enimity swap on flash/provoke/cure etc.
 
+**BLM LUA Includes:**
+
+    -Commands: /sorc to toggle sorc ring proc, and a keybind on ` to toggle dark gloves for MB.
+  
+    -Sets: Idle / Rest / Enfeeble / Enfeeble Mind / Elemental debuff / Fast cast / Nuke / Dark / HP down / Stoneskin
+  
+    -Logic for Elemental staves, obi's, uggy pendant, sorc legs, diabolos' pole, hp cut over %
+    
+
 **BRD LUA Includes:**
 
-     -Idle / Resting / CHR / String / Wind / Convert / Stoneskin / Cure / Utsu / Precast sets
+    -Idle / Resting / CHR / String / Wind / Convert / Stoneskin / Cure / Utsu / Precast sets
   
     -Instrument swapping based on song
   
