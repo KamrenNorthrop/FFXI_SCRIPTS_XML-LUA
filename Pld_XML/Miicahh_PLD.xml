@@ -1,48 +1,28 @@
-<!--
-	        Miicahh 75 PLD XML 	 
-		 
-
-
-This XML includes a few specific things for PLD:
-- Specific Lightning/Fire Resist sets for Cerberus and Khimaira
-- Specific set for Flash (Haste/Enmity)
-- Specific set for Rampart (VIT/Enmity)
-- Coded Vampire Earring into left ear in WS sets during Nighttime
-- Desert Boots will autoequip in Earth Weather
-- Will auto-equip Opo-opo Necklace when sleeping 
-- Will auto set macro book and lockstyle upon switching to PLD
-- The below items will lock in slot when they are equipped manually in idle set:
-		- Reraise Hairpin (Head Slot)
-		- Tidal Talisman (Body Slot)
-		- Reraise Earring (Left Ear Slot)
-		- Empress Band (Left Ring Slot)
-		- Anniversary Ring (Left Ring Slot)
-- Sets included are Evasion, Accuracy, Town, PhysicalDefense, MagicDefense, FireResist, LightningResist
-- To activate /eva, /acc, /town, /pdt, /mdt, /fr, /lr
-- To remove /evao, /acco etc. to turn off
-  -->
-
-
 <ashitacast>
-    <settings> <!--Contains settings specific to this xml, must be set to true/false to override default-->
-        <buffupdate>true</buffupdate> <!--Determines if your idlegear will be parsed when you gain/lose a buff. Default: TRUE -->
-        <statusupdate>true</statuspdate> <!--Determines if your idlegear will be parsed when you change status(stand/rest/engage/etc).  Default: TRUE -->
-        <hpupdate>false</hpupdate> <!--Determines if your idlegear will be parsed when your HP % changes.  Default: TRUE -->
-        <autoupdate>true</autoupdate> <!--Determines if your idlegear will be parsed on outgoing status updates(roughly every 350ms).  Default: TRUE-->
-    </settings>
-    <variables>
-		<var name="HP">0</var>
-        <var name="Acc">0</var>
-        <var name="Town">0</var>
-        <var name="PhysicalDefense">0</var>
-        <var name="MagicDefense">0</var>
-        <var name="FireResist">0</var>
-		<var name="IceResist">0</var>
-		<var name="EarthResist">0</var>		
-        <var name="LightningResist">0</var>
-        <var name="Refresh">0</var>			
-		<var name="UtsuActive">0</var>		
-    </variables>
+
+	<settings> <!--Contains settings specific to this xml, must be set to true/false to override default-->
+		<buffupdate>true</buffupdate> <!--Determines if your idlegear will be parsed when you gain/lose a buff. Default: TRUE -->
+		<statusupdate>true</statuspdate> <!--Determines if your idlegear will be parsed when you change status(stand/rest/engage/etc).  Default: TRUE -->
+		<hpupdate>false</hpupdate> <!--Determines if your idlegear will be parsed when your HP % changes.  Default: TRUE -->
+		<autoupdate>true</autoupdate> <!--Determines if your idlegear will be parsed on outgoing status updates(roughly every 350ms).  Default: TRUE-->
+	</settings>
+
+	<variables>
+		<var name="PDT">0</var>
+		<var name="MDT">0</var>
+		<var name="fire">0</var>
+		<var name="ice">0</var>
+		<var name="earth">0</var>
+		<var name="idle">1</var>
+		<var name="refresh">0</var>
+		<var name="FIGHT">0</var>
+		<var name="KITE">0</var>
+
+		<var name="curecheat">0</var>
+		<var name="weaponoverride">0</var>
+
+	</variables>
+
     <init>
         <command delay="1500">/echo ****** Initializing Miicahh AshitaCast ******</command>
         <command delay="1600">/echo Job is %p_job.</command>
@@ -50,9 +30,8 @@ This XML includes a few specific things for PLD:
         <command delay="2100">/macro book $macrobook</command>
         <command delay="3100">/macro set $macropage</command>
         <command delay="4100">/lockstyleset $lockstyleset</command>
-        <command delay="4400">/displayhead off</command>
-<!-- This codeblock will automatically change your macro book/page/lockstyle according to the job and subjob list below -->
-<!-- Change the below variable subjob abbreviations according to the subjobs you use with this profile. -->		
+        <!-- This codeblock will automatically change your macro book/page/lockstyle according to the job and subjob list below -->
+        <!-- Change the below variable subjob abbreviations according to the subjobs you use with this profile. -->		
         <if p_mainjob="PLD"><setvar name="macrobook" value="1" /><setvar name="lockstyleset" value="1" /></if>
         <if p_subjob="WAR"><setvar name="macrobook" value="1" /></if>
 		<if p_subjob="WAR"><setvar name="macropage" value="1" /></if> 
@@ -60,16 +39,17 @@ This XML includes a few specific things for PLD:
 		<if p_subjob="NIN"><setvar name="macropage" value="1" /></if> 
         <if p_subjob="DNC"><setvar name="macropage" value="1" /></if>
     </init>
-	
-    <sets>
-	
-	
-<!--Change to your specific gear-->
 
-<!-- Default Idle Set when out of combat -->
-        <set name="Idle">
-            <sub>Koenig Shield</sub>
-            <head>Darksteel Cap +1</head>
+	<sets>
+
+		<set name="refresh">
+			<body>Vermillion Cloak</body>
+		</set>
+
+		<set name="IDLE">
+			<ammo>Happy Egg</ammo>
+			<sub>Koenig Shield</sub>
+            <head>Bahamut's Mask</head>
             <body>Dst. Harness +1</body>
             <hands>Dst. Mittens +1</hands>
 			<legs>Crimson Cuisses</legs>
@@ -81,62 +61,74 @@ This XML includes a few specific things for PLD:
             <ring1>Merman's Ring</ring1>
             <ring2>Jelly Ring</ring2>
             <back>Gigant Mantle</back>
-        </set>
+		</set>
 
-<!-- Town set to look sick on nerds --> 
-        <set name="Town">
-            <ammo></ammo>
-            <sub>Koenig Shield</sub>
+        <set name="IDLEShadowsDown">
+			<ammo>Happy Egg</ammo>
+			<head>Darksteel Cap +1</head>
+            <body>Dst. Harness +1</body>
+			<!-- <head>Bahamut's Mask</head> -->
+            <hands>Dst. Mittens +1</hands>
+			<legs>Dst. Subligar +1</legs>
+            <feet>Glt. Leggings +1</feet>
+			<!-- <feet>Dst. Leggings +1</feet> -->
+            <neck>Shield Torque</neck>
+            <waist>Powerful Rope</waist>
+            <ear1>Merman's Earring</ear1>
+            <ear2>Ethereal Earring</ear2>
+            <ring1>Merman's Ring</ring1>
+            <ring2>Jelly Ring</ring2>
+            <back>Gigant Mantle</back>
+		</set>	
+
+		<set name="FIGHT">
+			<ammo>Happy Egg</ammo>
+			<head>Homam Zucchetto</head>
+			<neck>Shield Torque</neck>
+			<lear>Brutal Earring</lear>
+			<rear>Ethereal Earring</rear>
+			<body>Homam corazza</body>
+			<hands>Homam Manopolas</hands>
+			<lring>Rajas Ring</lring>
+			<rring>Toreador's Ring</rring>
+			<back>Forager's Mantle</back>
+			<waist>Swift Belt</waist>
+			<legs>Homam Cosciales</legs>
+			<feet>Homam Gambieras</feet>
+		</set>	
+		
+		<set name="Engaged">
+			<sub>Koenig Shield</sub>
 			<head>Koenig Schaller</head>
+			<neck>Shield Torquet</neck>
             <ear1>Cassie Earring</ear1>
 			<ear2>Ethereal Earring</ear2>
 			<body>Valor Surcoat</body>
-			<hands>Kng. Handschuhs</hands>
-            <legs>Homam Cosciales</legs>
-			<feet>Homam Gambieras</feet>
-			<neck>Parade Gorget</neck>
-			<waist>Swift Belt</waist>
+			<hands>Homam Manopolas</hands>
 			<ring1>Bomb Queen Ring</ring1>
 			<ring2>Jelly Ring</ring2>
-			<back>Valor Cape</back>
-        </set>
-        
-<!-- Default TP Set (USE BASE) --> 
-        <set name="TP">
-            <sub>Koenig Shield</sub>
-			<ammo>Happy Egg</ammo>
-			<head>Homam Zucchetto</head>
-			<body>Homam Corazza</body>
-			<hands>Kng. Handschuhs</hands>
+			<waist>Swift Belt</waist>
             <legs>Homam Cosciales</legs>
 			<feet>Homam Gambieras</feet>
-			<neck>Parade Gorget</neck>
-			<waist>Swift Belt</waist>
-			<ear1>Brutal Earring</ear1>
-			<ear2>Ethereal Earring</ear2>
-			<ring1>Rajas Ring</ring1>
-			<ring2>Toreador's Ring</ring2>
 			<back>Valor Cape</back>
-        </set>
-		
-<!-- High Accuracy Set, /acc /acco -->
-        <set name="Acc">
-			<head>Green Ribbon +1</head>
-			<body>Coral scale mail</body>
-			<hands>Tarasque mitts</hands>
-			<legs>Coral cuisses +1</legs>
-			<feet>Coral greaves</feet>
-			<neck>Love Torque</neck>
-			<waist>Swift Belt</waist>
-			<ear1>Ruby Earring</ear1>
-			<ear2>Ruby Earring</ear2>
-			<ring1>Ether Ring</ring1>
-			<ring2>Jelly Ring</ring2>
-			<back>Dino Mantle</back>		
-        </set>
+		</set>	
 
-<!-- Default WS Set -->	
-        <set name="WS">
+		<set name="Sword">
+			<head>Homam Zucchetto</head>
+			<neck>Spike Necklace</neck>
+			<lear>Knight's Earring</lear>
+			<rear>Merman's Earring</rear>
+			<body>Haubergeon</body>
+			<hands>Homam Manopolas</hands>
+			<lring>Ruby Ring</lring>
+			<ring2>Toreador's Ring</ring2>
+			<back>Psilos Mantle</back>
+			<waist>Life Belt</waist>
+			<legs>Ryl.Kgt. Breeches</legs>
+			<feet>Rutter Sabatons</feet>
+		</set>
+
+		<set name="Swift">
 			<ammo>Tiphia Sting</ammo>
 			<head>Mercenary Captain's Headgear</head>
 			<body>Hecatomb Harness</body>
@@ -150,113 +142,264 @@ This XML includes a few specific things for PLD:
 			<ring1>Rajas Ring</ring1>
 			<ring2>Flame Ring</ring2>
 			<back>Forager's Mantle</back>
-        </set>	
+		</set>
 
-<!-- Enmity+ Set -->
-        <set name="Enmity">
-			<ammo>Happy Egg</ammo>
-			<head>Aegishjalmr</head>
-			<body>Valor Surcoat</body>
-			<hands>Valor Gauntlets</hands>
-            <legs>Gallant Breeches</legs>
-			<feet>Vlr. Leggings +1</feet>
-			<neck>Harmonia's Torque</neck>
+		<set name="Savage">
+			<ammo>Tiphia Sting</ammo>
+			<head>Mercenary Captain's Headgear</head>
+			<body>Hecatomb Harness</body>
+			<hands>Hecatomb Mittens</hands>
+            <legs>Republic Subligar</legs>
+			<feet>Hct. Leggings</feet>
+			<neck>Spike Necklace</neck>
 			<waist>Warwolf Belt</waist>
-			<ear1></ear1>
-			<ear2></ear2>
-			<ring1>Mermaid Ring</ring1>
-			<ring2>Hercules' Ring</ring2>
-			<back>Valor Cape</back>		
-        </set>
+			<ear1>Brutal Earring</ear1>
+			<ear2>Diabolos's Earring</ear2>
+			<ring1>Rajas Ring</ring1>
+			<ring2>Flame Ring</ring2>
+			<back>Forager's Mantle</back>
+		</set>
 
-        <set name="HybridCure">
-            <head>Aegishjalmr</head>
-            <neck>Harmonia's torque</neck>
-            <body>Valor Surcoat</body>
-            <ear2>Hospitaler Earring</ear2>
-            <hands>Valor Gauntlets</hands>
-            <ring1>Hercules' Ring</ring1>
-        </set>	
-
-<!-- Flash Set (Put all Haste pieces then fill the rest out with Enmity+ -->
-        <set name="Flash">
-			<ammo>Happy Egg</ammo>
-			<head>Aegishjalmr</head>
-			<body>Valor Surcoat</body>
-			<hands>Valor Gauntlets</hands>
-            <legs>Gallant Breeches</legs>
-			<feet>Vlr. Leggings +1</feet>
+		<set name="ATONEMENT">
+			<ammo>Aumoniere</ammo>
+			<head>Bahamut's Mask</head>
 			<neck>Harmonia's Torque</neck>
+			<lear>Hades Earring +1</lear>
+			<rear>Hades Earring +1</rear>
+			<body>Nuevo Coselete</body>
+			<hands>Valor Gauntlets</hands>
+			<lring></lring>
+			<rring>Hercules' Ring</rring>
+			<back>Cerb. Mantle +1</back>
 			<waist>Warwolf Belt</waist>
-			<ear1></ear1>
-			<ear2></ear2>
-			<ring1>Mermaid Ring</ring1>
-			<ring2>Hercules' Ring</ring2>
-			<back>Valor Cape</back>		
-        </set>
+			<legs>Gallant Breeches</legs>
+			<feet>Valor Leggings</feet>
+		</set>
 		
-<!-- refresh Set, /fresh  -->
-        <set name="Refresh">
-			<ammo>Happy Egg</ammo>
-			<head></head>
-			<body></body>
-			<neck>Parade Gorget</neck>
-        </set>	
-		
-<!-- HPup Set, /HP  -->
-        <set name="HP">	
-            <ammo>Happy Egg</ammo>
-            <head>Koenig Schaller</head>
-            <body>Custom Tunic</body>
-            <hands>Enkelados's Brc.</hands>
-			<legs>Homam Cosciales</legs>
-            <feet>Homam Gambieras</feet>
-            <neck>Shield Pendant</neck>
-            <waist>Powerful Rope</waist>
-            <ear1>Cassie Earring</ear1>
-            <ear2>Ethereal Earring</ear2>
-            <ring1>Bomb ring</ring1>
-            <ring2>Bomb Queen Ring</ring2>
-            <back>Gigant Mantle</back>		
-        </set>
-		
-<!-- PDT Set, /pdt /pdto -->
-        <set name="PhysicalDefense">
-            <head>Darksteel Cap +1</head>
+		<set name="PDT">
+			<head>Darksteel Cap +1</head>
             <body>Dst. Harness +1</body>
             <hands>Dst. Mittens +1</hands>
 			<legs>Dst. Subligar +1</legs>
             <feet>Dst. Leggings +1</feet>
-            <neck>Shield Pendant</neck>
+            <neck>Shield Torque</neck>
             <waist>Powerful Rope</waist>
             <ear1>Merman's Earring</ear1>
             <ear2>Ethereal Earring</ear2>
             <ring1>Merman's Ring</ring1>
             <ring2>Jelly Ring</ring2>
             <back>Gigant Mantle</back>
-        </set>
+		</set>
 		
-<!-- MDT Set, /mdt /mdto -->
-        <set name="MagicDefense">
-            <head>Coral Visor</head>
+		<set name="MDT"><!--needs 23-->
+		    <head>Coral Visor</head>
             <body>Coral Scale Mail</body>
-            <hands>Enkelados's Brc.</hands>
+            <hands>Homam Manopolas</hands>
 			<legs>Coral Cuisses +1</legs>
             <feet>Coral Greaves</feet>
-            <neck>Shield Pendant</neck>
-            <waist>Powerful Rope</waist>
+            <neck>Shield Torque</neck>
+            <waist>Swift Belt</waist>
             <ear1>Merman's Earring</ear1>
             <ear2>Merman's Earring</ear2>
             <ring1>Merman's Ring</ring1>
             <ring2>Merman's Ring</ring2>
-            <back>Resentment Cape</back>				
-        </set>	
-		
-<!-- Cure Set (USE ENMITYCURE)--> 
-        <set name="Cure">
-		    <ammo>Happy Egg</ammo>
-			<head>Aegishjalmr</head>
-			<body>Valor Surcoat</body>
+            <back>Resentment Cape</back>
+		</set>
+
+		<set name="Enhance">
+			<head></head>
+			<neck>Enhancing Torque</neck>
+			<lear></lear>
+			<rear></rear>
+			<body></body>
+			<hands></hands>
+			<lring></lring>
+			<ring2></ring2>
+			<back></back>
+			<waist></waist>
+			<legs>Gallant Breeches</legs>
+			<feet></feet>
+		</set>
+
+		<set name="FIRE">
+			<main></main>
+			<sub></sub>
+			<range></range>
+			<head>Green Ribbon +1</head>
+			<neck>Jeweled Collar +1</neck>
+			<lear>Ruby Earring</lear>
+			<rear>Ruby Earring</rear>
+			<body>Assault Brstplate</body>
+			<hands>Tarasque Mitts</hands>
+			<lring>Ruby Ring</lring>
+			<ring2>Malflame Ring</ring2>
+			<back>Dino Mantle</back>
+			<waist>Water Belt</waist>
+			<legs>Blood Cuisses</legs>
+			<feet>Coral Greaves +1</feet>
+		</set>
+
+		<set name="ICE">
+			<main></main>
+			<sub></sub>
+			<range></range>
+			<head>Black Ribbon</head>
+			<neck>Jeweled Collar +1</neck>
+			<lear>Triumph Earring</lear>
+			<rear>Crimson Earring</rear>
+			<body>Assault Brstplate</body>
+			<hands>Feral Gloves</hands>
+			<lring>Malfrost Ring</lring>
+			<rring>Shadow Ring</rring>
+			<back>Ram Mantle</back>
+			<waist>Fire Belt</waist>
+			<legs>Tiger Trousers</legs>
+			<feet>Crimson Greaves</feet>
+		</set>
+
+		<set name="EARTH">
+			<main>Club of Trials</main>
+			<sub>Nms. Shield +1</sub>
+			<range></range>
+			<ammo></ammo>
+			<head>Black Ribbon</head>
+			<neck>Jeweled Collar +1</neck>
+			<lear>Topaz Earring</lear>
+			<rear>Topaz Earring</rear>
+			<body>Assault Brstplate</body>
+			<hands>Sand Gloves</hands>
+			<lring>Maldust Ring</lring>
+			<rring>Shadow Ring</rring>
+			<back>Beak Mantle</back>
+			<waist>Wind Belt</waist>
+			<legs>Beak Trousers +1</legs>
+			<feet>Crimson Greaves</feet>
+		</set>
+
+		<set name="DARK">
+			<main></main>
+			<sub>Nms. Shield +1</sub>
+			<range>Cerberus Bow</range>
+			<head>Black Ribbon</head>
+			<neck>Jeweled Collar +1</neck>
+			<lear>Hades Earring +1</lear>
+			<rear>Hades Earring +1</rear>
+			<body>Scp. Harness +1</body>
+			<hands>Dst. Mittens +1</hands>
+			<lring></lring>
+			<rring></rring>
+			<back></back>
+			<waist></waist>
+			<legs>Blood Cuisses</legs>
+			<feet></feet>
+		</set>
+
+		<set name="Precast">
+		<body>Nuevo Coselete</body>
+		<rear>Loquac. Earring</rear>
+		<legs>Homam Cosciales</legs>
+		</set>
+
+		<set name="PrecheatIII"> <!--  -->
+			<ammo>Tiphia Sting</ammo>
+            <head>Darksteel cap +1</head>
+            <body>Dst. Harness +1</body>
+            <hands>Hydra Moufles</hands>
+			<legs>Dst. Subligar +1</legs>
+            <feet>Hydra Sollerets</feet>
+            <neck>Harmonia's Torque</neck>
+            <waist>Warwolf Belt</waist>
+            <ear1>Loquac. Earring</ear1>
+            <ear2>Hospitaler Earring</ear2>
+            <ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+            <back>Forager's Mantle</back>			
+		</set>
+
+		<set name="PrecheatIV"> <!--  -->
+			<ammo>Tiphia Sting</ammo>
+            <head>Darksteel cap +1</head>
+            <body>Hydra Haubert</body>
+            <hands>Hydra Moufles</hands>
+			<legs>Dst. Subligar +1</legs>
+            <feet>Hydra Sollerets</feet>
+            <neck>Harmonia's Torque</neck>
+            <waist>Warwolf Belt</waist>
+            <ear1>Loquac. Earring</ear1>
+            <ear2>Hospitaler Earring</ear2>
+            <ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+            <back>Forager's Mantle</back>		
+		</set>
+
+		<set name="Utsu"> <!--  -->
+			<head>Homam Zucchetto</head>
+			<neck>Shield Torque</neck>
+			<hands>Homam Manopolas</hands>
+            <waist>Swift Belt</waist>
+            <legs>Homam Cosciales</legs>
+			<feet>Glt. Leggings +1</feet>
+		</set>
+
+
+		<set name="EconomyUtsu"> <!--  -->
+			<head>Homam Zucchetto</head>
+			<neck>Shield Torque</neck>
+			<hands>Homam Manopolas</hands>
+            <waist>Swift Belt</waist>
+            <legs>Homam Cosciales</legs>
+			<feet>Homam Gambieras</feet>
+		</set>
+
+		<set name="HealIV"> <!--  -->
+            <ammo>Happy Egg</ammo>
+			<head>Koenig Schaller</head>
+			<neck>Harmonia's Torque</neck>
+			<lear>Hospitaler Earring</lear>
+			<body>Custom Tunic</body>
+			<hands>Homam Manopolas</hands>
+			<lring>Bomb Queen Ring</lring>
+    		<rring>Hercules' Ring</rring>
+			<back>Gigant Mantle</back>
+			<waist>Warwolf Belt</waist>
+			<legs>Homam Cosciales</legs>
+            <feet>Vlr. Leggings +1</feet>
+		</set>
+
+		<set name="HealIII"> <!--  -->
+			<feet>Valor Leggings</feet>
+			<head>Koenig Schaller</head>
+			<neck>Harmonia's Torque</neck>
+			<lear>Hospitaler Earring</lear>
+			<body>Hydra Haubert</body>
+			<hands>Homam Manopolas</hands>
+			<lring>Bomb Queen Ring</lring>
+    		<rring>Hercules' Ring</rring>
+			<back>Gigant Mantle</back>
+			<waist>Warwolf Belt</waist>
+			<legs>Gallant Breeches</legs>
+            <feet>Vlr. Leggings +1</feet>
+		</set>
+
+		<set name="EconomyHealIII"> <!--  -->
+		 	<feet>Valor Leggings</feet>
+			<head>Koenig Schaller</head>
+			<neck>Harmonia's Torque</neck>
+			<lear>Hospitaler Earring</lear>
+			<body>Hydra Haubert</body>
+			<hands>Homam Manopolas</hands>
+			<lring>Bomb Queen Ring</lring>
+    		<rring>Hercules' Ring</rring>
+			<back>Gigant Mantle</back>
+			<waist>Warwolf Belt</waist>
+			<legs>Gallant Breeches</legs>
+            <feet>Vlr. Leggings +1</feet>
+		</set>
+
+		<set name="SentinelHeal"> <!--  -->
+			<ammo>Happy Egg</ammo>
+			<head>Bahamut's Mask</head>
+			<body>Hydra Haubert</body>
 			<hands>Valor Gauntlets</hands>
             <legs>Gallant Breeches</legs>
 			<feet>Vlr. Leggings +1</feet>
@@ -267,643 +410,439 @@ This XML includes a few specific things for PLD:
 			<ring1>Bomb Queen Ring</ring1>
 			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>	
-        </set>
+		</set>
 
-<!-- Rampart Set (Stack VIT+ pieces then fill the rest out with Enmity+ -->
-        <set name="Rampart">
+		<set name="Flash">
+			<ammo>Happy Egg</ammo>
+			<head>Bahamut's Mask</head>
+			<body>Hydra Haubert</body>
+			<hands>Homam Manopolas</hands>
+            <legs>Homam Cosciales</legs>
+			<feet>Hydra Sollerets</feet>
+			<neck>Harmonia's Torque</neck>
+			<waist>Swift Belt</waist>
+			<ear1></ear1>
+			<ear2></ear2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+			<back>Valor Cape</back>
+		</set>
+
+		<set name="FreeFlash">
+			<ammo>Happy Egg</ammo>
+			<head>Bahamut's Mask</head>
+			<body>Hydra Haubert</body>
+			<hands>Homam Manopolas</hands>
+            <legs>Homam Cosciales</legs>
+			<feet>Hydra Sollerets</feet>
+			<neck>Harmonia's Torque</neck>
+			<waist>Swift Belt</waist>
+			<ear1></ear1>
+			<ear2></ear2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+			<back>Valor Cape</back>
+		</set>
+		
+		<set name="MEGAENMITY"> <!--  -->
+			<ammo>Happy Egg</ammo>
+			<head>Bahamut's Maskr</head>
+			<body>Hydra Haubert</body>
+			<hands>Hydra Moufles</hands>
+            <legs>Gallant Breeches</legs>
+			<feet>Hydra Sollerets</feet>
+			<neck>Harmonia's Torque</neck>
+			<waist>Warwolf Belt</waist>
+			<ear1></ear1>
+			<ear2></ear2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+			<back>Valor Cape</back>	
+		</set>
+
+		<set name="Sentinel"> <!--  -->
+			<ammo>Happy Egg</ammo>
+			<head>Bahamut's Mask</head>
+			<body>Hydra Haubert</body>
+			<hands>Hydra Moufles</hands>
+            <legs>Gallant Breeches</legs>
+			<neck>Harmonia's Torque</neck>
+			<waist>Warwolf Belt</waist>
+			<ear1></ear1>
+			<ear2></ear2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+			<back>Valor Cape</back>	
+			<feet>Vlr. Leggings +1</feet>
+		</set>
+
+		<set name="Rampart"> <!--  -->
 			<ammo>Happy Egg</ammo>
 			<head>Valor Coronet</head>
-			<body>Valor surcoat</body>
-			<hands>Kng. Handschuhs</hands>
+			<body>Hydra Haubert</body>
+			<hands>Hydra Moufles</hands>
             <legs>Homam Cosciales</legs>
-			<feet>Glt. Leggings</feet>
+			<feet>Hydra Sollerets</feet>
 			<neck>Parade Gorget</neck>
-			<waist>Swift Belt</waist>
+			<waist>Warwolf Beltt</waist>
 			<ear1>Brutal Earring</ear1>
 			<ear2>Ethereal Earring</ear2>
 			<ring1>Mermaid Ring</ring1>
 			<ring2>Hercules' Ring</ring2>
 			<back>Valor Cape</back>
-        </set>				
-		
-<!-- set when Utsu is up-->
-        <set name="UtsuActive">
-			<body>Royal Cloak</body>
-			<neck>Parade Gorget</neck>
-        </set>	
-		
-<!-- holy Set (moldy duh) -->
-        <set name="Holy">
-			<neck>Divine Torque</neck>
-			<ear1>Moldavite Earring</ear1>	
-        </set>	
-		
-<!-- Haste Set for Magic Recast -->
-        <set name="Haste">
-            <head>Homam Zucchetto</head>
-			<hands>Dusk Gloves</hands>
-            <waist>Swift Belt</waist>
-            <legs>Homam Cosciales</legs>
-			<feet>Homam Gambieras</feet>
-        </set>
-		
-<!-- Will autoequip Crimson Cuisses when you move
-        <set name="Running">
-            <legs>Crimson Cuisses</legs>
-			<hands>Kng. Handschuhs</hands>
-        </set>	-->
+		</set>
 
-<!-- Fire Resist Set for Cerberus, /fr /fro -->
-        <set name="FireResist">    
-			<main>Hrotti</main>
-			<sub>Nms. Shield +1</sub>
+		<set name="Bash">
 			<ammo>Happy Egg</ammo>
-			<head>Green Ribbon +1</head>
-			<body>Republic Harness</body>
-			<hands>Tarasque Mitts</hands>
+			<head>Bahamut's Mask</head>
+			<body>Hydra Haubert</body>
+			<hands>Valor Gauntlets</hands>
+            <legs>Gallant Breeches</legs>
+			<feet>Hydra Sollerets</feet>
+			<neck>Harmonia's Torque</neck>
+			<waist>Warwolf Belt</waist>
+			<ear1></ear1>
+			<ear2></ear2>
+			<ring1>Mermaid Ring</ring1>
+			<ring2>Hercules' Ring</ring2>
+			<back>Valor Cape</back>	
+		</set>
+
+		<set name="Kite">
+			<!--<sub>Koenig Shield</sub>
+            <head>Darksteel Cap +1</head>
+            <body>Dst. Harness +1</body>
+            <hands>Dst. Mittens +1</hands>
 			<legs>Crimson Cuisses</legs>
-			<feet>Power Sandals</feet>
-			<neck>Jeweled Collar</neck>
-			<waist>Water Belt</waist>
-			<ear1>Ruby Earring</ear1>
-			<ear2>Ruby Earring</ear2>
-			<ring1>Malflame ring</ring1>
-			<ring2>Ruby Ring</ring2>
-			<back>Dino Mantle</back>		
-        </set>		
-		
-<!-- Ice Resist for Jormy, Ice -->
-        <set name="IceResist">    
-			<main>Hrotti</main>
-			<sub>Ice Shield</sub>
-			<ammo>Happy Egg</ammo>
-			<head>Green Ribbon +1</head>
-			<body>Feral Jerkin</body>
-			<hands>Feral Gloves</hands>
-			<legs>Feral Trousers</legs>
-			<feet>Crimson Greaves</feet>
-			<neck>Jeweled Collar</neck>
-			<waist>Fire Belt</waist>
-			<ear1>Ruby Earring</ear1>
-			<ear2>Ruby Earring</ear2>
-			<ring1>Diamond Ring</ring1>
-			<ring2>Malfrost Ring</ring2>
-			<back>Ram Mantle</back>		
-        </set>		
-		
-<!-- Earth Resist  -->
-        <set name="EarthResist">    
-			<main>Hrotti</main>
-			<sub>Nms. Shield +1</sub>
-			<ammo>Happy Egg</ammo>
-			<head>Green Ribbon +1</head>
-			<body>Northern Jerkin</body>
-			<hands>Tarasque Mitts</hands>
-			<legs>Crimson Cuisses</legs>
-			<feet>Crimson Greaves</feet>
-			<neck>Jeweled Collar</neck>
-			<waist>Fire Belt</waist>
-			<ear1>Ruby Earring</ear1>
-			<ear2>Ruby Earring</ear2>
-			<ring1>Merman's Ring</ring1>
-			<ring2>Sattva Ring</ring2>
-			<back>Ram Mantle +1</back>		
-        </set>			
-				
-<!-- Lightning Resist Set for Khimaira, /lr /lro -->
-        <set name="LightningResist">
-            <main></main>
-			<sub>Nms. Shield +1</sub>
-			<range>Lightning Bow +1</range>
-			<head>Green Ribbon +1</head>
-			<body>Dst. Harness +1</body>
-			<hands>Dst. Mittens +1</hands>
-			<legs>Crimson Cuisses</legs>
+            <feet>Dst. Leggings +1</feet>
+            <neck>Shield Pendant</neck>
+            <waist>Powerful Rope</waist>
+            <ear1>Merman's Earring</ear1>
+            <ear2>Ethereal Earring</ear2>
+            <ring1>Merman's Ring</ring1>
+            <ring2>Jelly Ring</ring2>
+            <back>Gigant Mantle</back> -->
 			<feet>Dst. Leggings +1</feet>
-			<neck>Jeweled Collar</neck>
-			<waist>Earth Belt</waist>
-			<ear1>Arete Del Sol</ear1>
-			<ear2>Arete Del Sol</ear2>
-			<ring1>Spinel Ring</ring1>
-			<ring2>Spinel Ring</ring2>
-			<back>Gaia Mantle</back>
-        </set>	
-		
-<!-- Cure Cheat Sets -->	
-<set name="Cure" baseset="Enmity"> <!-- FOR WHEN CURE CHEAT NOT NEEDED (TARGET IS OTHERS/HP NOT AT WHAT CURE CHEAT DOES) -->
-    <lear>Hospitaler Earring</lear>
-</set>
-<set name="HPUpIV" baseset="Enmity"> <!-- END CAST CURE 4 CHEAT -->
-    <body>Custom Tunic</body>
-    <lring>Bomb Queen Ring</lring>
-    <rring>Hercules' Ring</rring>
-    <head>Koenig Schaller</head>
-    <back>Gigant Mantle</back>
-    <waist></waist>
-    <legs>Homam Cosciales</legs>
-    <lear>Hospitaler Earring</lear>
-</set>
-<set name="HPDownIV" > <!-- BEGIN CAST CURE 4 CHEAT -->
-    <neck>Remove</neck>
-	<ammo>Remove</ammo>
-	<head>Electrum Hairpin</head>
-    <lring>Rajas Ring</lring>
-    <rring>Electrum Ring</rring>
-    <legs>Adaman Cuisses</legs>
-	<feet>Rutter Sabatons</feet>
-	<waist>Hierarch Belt</waist>
-	<back>Boxer's Mantle</back>
-	<body>Assault Jerkin</body>
-	<hands>Adaman gauntlets</hands>
-	<lear>Brutal Earring</lear>
-	<rear>Ethereal Earring</rear>
-</set>
-<set name="HPUpIII" baseset="Enmity"> <!-- END CAST CURE 3 CHEAT -->
-    <head>Hero's Galea</head>
-    <back>Aenotherus Mantle</back>
-    <hands>Homam Manopolas</hands>
-    <lear>Hospitaler Earring</lear>
-</set>
-<set name="HPDownIII" baseset="Standard"> <!-- BEGIN CAST CURE 3 CHEAT -->
-    <lring>Ether Ring</lring>
-    <rring>Bifrost Ring</rring>
-</set>	
-		
-    </sets>
-	
-	
-<!-- IMPORTANT CODE BELOW DO NOT TOUCH UNLESS YOU KNOW WHAT YOU'RE DOING! -->
-	
-    <inputcommands>
-		<cmd input="/allo">
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />			
-            <setvar name="EarthResist" value="0" />					
-            <setvar name="LightningResist" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="Refresh" value="0" />
-            <setvar name="Acc" value="0" />
-			<setvar name="HP" value="0" />
-            <setvar name="UtsuActive" value="0" />
-            <addtochat color="100">Disabling All Sets</addtochat>
-        </cmd>
-        <cmd input="/hp">
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />			
-            <setvar name="LightningResist" value="0" />
-            <setvar name="EarthResist" value="0" />				
-            <setvar name="Acc" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$HP=0">
-                <setvar name="HP" value="1" />
-                <addtochat color="100">HP UP Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/hpo">
-            <if advanced="$HP=1">
-                <setvar name="HP" value="0" />
-                <addtochat color="200">HP Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/acc">
-            <setvar name="HP" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />	
-            <setvar name="EarthResist" value="0" />				
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="LightningResist" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$Acc=0">
-                <setvar name="Acc" value="1" />
-                <addtochat color="100">High Accuracy Set Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/acco">
-            <if advanced="$Acc=1">
-                <setvar name="Acc" value="0" />
-                <addtochat color="200">High Accuracy Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/pdt">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />	
-            <setvar name="EarthResist" value="0" />				
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="LightningResist" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$PhysicalDefense=0">
-                <setvar name="PhysicalDefense" value="1" />
-                <addtochat color="100">Physical Defense Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/pdto">
-            <if advanced="$PhysicalDefense=1">
-                <setvar name="PhysicalDefense" value="0" />
-                <addtochat color="200">Physical Defense Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/refresh">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />
-            <setvar name="EarthResist" value="0" />				
-            <setvar name="LightningResist" value="0" />
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="Town" value="0" />
-		    <setvar name="PhysicalDefense" value="0" />
-            <if advanced="$Refresh=0">
-                <setvar name="Refresh" value="1" />
-                <addtochat color="100">Refresh set Equipped.</addtochat>
-            </if>
-		</cmd>		
-        <cmd input="/refresho">
-            <if advanced="$Refresh=1">
-                <setvar name="Refresh" value="0" />
-                <addtochat color="200">Refresh off. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>		
-        <cmd input="/mdt">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="IceResist" value="0" />	
-            <setvar name="EarthResist" value="0" />				
-            <setvar name="LightningResist" value="0" />
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="Town" value="0" />
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$MagicDefense=0">
-                <setvar name="MagicDefense" value="1" />
-                <addtochat color="100">Magic Defense Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/mdto">
-            <if advanced="$MagicDefense=1">
-                <setvar name="MagicDefense" value="0" />
-                <addtochat color="200">Magic Defense Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/fr">
-			<setvar name="Evasion" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="LightningResist" value="0" />
-            <setvar name="UtsuActive" value="0" />			
-            <setvar name="Refresh" value="0" />	
-            <setvar name="IceResist" value="0" />	
-            <setvar name="EarthResist" value="0" />				
-            <if advanced="$FireResist=0">
-                <setvar name="FireResist" value="1" />
-                <addtochat color="100">Fire Resist Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/fro">
-            <if advanced="$FireResist=1">
-                <setvar name="FireResist" value="0" />
-                <addtochat color="200">Fire Resist Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/lr">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="FireResist" value="0" />
-	        <setvar name="UtsuActive" value="0" />		
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$LightningResist=0">
-                <setvar name="LightningResist" value="1" />
-                <addtochat color="100">Lightning Resist Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/lro">
-            <if advanced="$LightningResist=1">
-                <setvar name="LightningResist" value="0" />
-                <addtochat color="200">Lightning Resist Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/ice">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="LightningResist" value="0" />			
-	        <setvar name="UtsuActive" value="0" />		
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$IceResist=0">
-                <setvar name="IceResist" value="1" />
-                <addtochat color="100">Ice Resist Set Equipped.</addtochat>
-            </if>
-        </cmd>
-		
-        <cmd input="/iceo">
-            <if advanced="$IceResist=1">
-                <setvar name="IceResist" value="0" />
-                <addtochat color="200">Ice Resist Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>		
-        <cmd input="/UtsuActive">
-			<setvar name="HP" value="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="Town" value="0" />
-            <setvar name="FireResist" value="0" />	
-            <setvar name="IceResist" value="0" />				
-            <setvar name="Refresh" value="0" />			
-            <if advanced="$UtsuActive=0">
-                <setvar name="UtsuActive" value="1" />
-                <addtochat color="100">Utsu Active set cancelled.</addtochat>
-            </if>
-        </cmd>	
-        <cmd input="/Town">
-			<setvar name="HP" valuep_status="0" />
-            <setvar name="Acc" value="0" />
-            <setvar name="PhysicalDefense" value="0" />
-            <setvar name="MagicDefense" value="0" />
-            <setvar name="FireResist" value="0" />
-            <setvar name="LightningResist" value="0" />
-            <setvar name="IceResist" value="0" />			
-            <setvar name="Refresh" value="0" />		
-            <setvar name="UtsuActive" value="0" />			
-            <if advanced="$Town=0">
-                <setvar name="Town" value="1" />
-                <addtochat color="100">Town Set Equipped.</addtochat>
-            </if>
-        </cmd>
-        <cmd input="/Towno">
-            <if advanced="$Town=1">
-                <setvar name="Town" value="0" />
-                <addtochat color="200">Town Set Canceled. Returning to Normal set.</addtochat>
-            </if>
-        </cmd>
-    </inputcommands>
-    <idlegear>
-				<equip set="Idle" />
-        <if p_status="idle">
-            <equip set="Idle" />
-				<if eq_lring="Empress Band">		
-					<equip lock="true">
-					<lring>Empress Band</lring> 
-					</equip>
-				</if>
-				<if eq_lring="Anniversary Ring">		
-					<equip lock="true">
-					<lring>Anniversary Ring</lring> 
-					</equip>
-				</if>
-				<if eq_main="Warp Cudgel">		
-					<equip lock="true">
-					<main>Anniversary Ring</main> 
-					</equip>
-				</if>				
-				<if eq_lear="Reraise Earring">		
-					<equip lock="true">
-					<lear>Reraise Earring</lear> 
-					</equip>
-				</if>
-				<if eq_head="Reraise Hairpin">		
-					<equip lock="true">
-					<head>Reraise Hairpin</head> 
-					</equip>
-				</if>
-                <if eq_range="Lightning Bow +1">
-                    <equip lock="true"><range>Lightning Bow +1</range></equip>
-                </if>
-				<if eq_feet="Powder Boots">		
-					<equip lock="true">
-					<feet>Powder Boots</feet> 
-					</equip>
-				</if>				
-				<if eq_body="Tidal Talisman">		
-					<equip lock="true">
-					<body>Tidal Talisman</body>  
-					</equip>
-				</if>
-				<if eq_lring="Tavnazian Ring">		
-					<equip lock="true">
-					<lring>Tavnazian Ring</lring>  
-					</equip>
-				</if>				
-				<if buffactive="2">
-                    <equip>
-                    <neck>Opo-opo Necklace</neck>
-                    </equip>
-                </if>
-                <if advanced="$HP=1">
-                    <equip set="HP" />
-                </if>
-                <if advanced="$Acc=1">
-                    <equip set="Acc" />
-                </if>	
-				<if p_hpp="<50">
-					<equip lock="true">
-					<rring>Hercules' Ring</rring>  
-					</equip>
-				</if>
-                <if p_hpp=">84">
-                    <equip lock="true">
-                    <neck>Parade Gorget</neck>
-                    </equip>
-                </if>					
-                <if advanced="$MagicDefense=1">
-                    <equip set="MagicDefense" />
-                </if>
-                <if advanced="$Refresh=1">
-                    <equip set="Refresh" />
-                </if>				
-                <if advanced="$PhysicalDefense=1">
-                    <equip set="PhysicalDefense" />
-                </if>
-                <if advanced="$FireResist=1">
-                    <equip set="FireResist" />
-                </if>
-                <if advanced="$IceResist=1">
-                    <equip set="IceResist" />
-                </if>				
-                <if advanced="$LightningResist=1">
-                    <equip set="LightningResist" />
-                </if>
-                <if advanced="$Town=1">
-                    <equip set="Town" />
-                </if>
-                <if p_ismoving="true">
-                    <equip set="Running" />
-                </if>
-				<elseif p_ismoving="true">
-					<if e_weatherelement="Earth">
-						<equip set="DesertBoots" />
-					</if>
-				</elseif>
-        </if>
-			<if p_status="engaged">
-				<if advanced="$HP=1">
-						<equip set="HP" />
-				</if>			
-				<elseif advanced="$Acc=1">
-						<equip set="Acc" />
-				</elseif>  					
-				<elseif advanced="$MagicDefense=1">
-					<equip set="MagicDefense" />
-				</elseif>						
-				<elseif advanced="$PhysicalDefense=1">
-					<equip set="PhysicalDefense" />
-				</elseif>
-				<elseif advanced="$LightningResist=1">
-					<equip set="LightningResist" />
-				</elseif>
-				<elseif advanced="$FireResist=1">
-					<equip set="FireResist" />
-				</elseif>
-				<elseif advanced="$IceResist=1">
-					<equip set="IceResist" />
-				</elseif>				
-				<elseif advanced="$Refresh=1">
-					<equip set="Refresh" />
-				</elseif>				
-                <elseif>
-                    <equip set="TP" />
-                </elseif>			
-                <if buffactive="198">
-                    <equip>
-                        <ear1>Minuet Earring</ear1>
-                    </equip>
-                </if>
-				<if buffactive="2">
-					<equip>
-						<neck>Opo-opo Necklace</neck>
-					</equip>
-				</if>	
-				<if p_hpp="<50">
-					<equip lock="true">
-					<rring>Hercules' Ring</rring>  
-					</equip>
-				</if>
-                <if p_hpp=">84">
-                    <equip lock="true">
-                    <neck>Parade Gorget</neck>
-                    </equip>
-                </if>								
-		</if>                     
-    </idlegear>
-	<preranged>
-		<equip set="Preshot" />
-	</preranged>
+            <legs>Crimson Cuisses</legs>
+		</set>
 
-	<midranged>
-		<equip set="Ranged" />
-	</midranged>
-	
-    <premagic>
-        <if ad_skill="Ninjutsu|White Magic">
-            <equip set="Haste" />
-        </if>
-    </premagic>
-	
-    <midmagic>
-		<if ad_name="Flash">
-            <equip set="Flash" />
-		</if>
-		<if ad_name="Holy">
-            <equip set="Holy" />
-		</if>		
-		<if ad_name="Cure III">
-            <equip set="Cure" />
-            <command>/acco</command>
-		</if>
-        <if ad_name="Cure IV">
-            <if advanced="$HP=1">
-            <equip set="HybridCure" />
-            <command>/hpo</command>
-            <command>/acco</command>
-            </if>
-                <else><equip set="Cure" /></else>
-        </if>
-		
-		<if ad_name="Utsusemi: Ichi">
+	</sets>
+	<inputcommands>
+
+		<cmd input ="/pdt">
+			<setvar name="PDT" value="1" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="69">PDT OVERRIDE</addtochat>
+			<equip set="PDT"/>
+		</cmd>
+		<cmd input ="/mdt">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="1" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="8">MDT OVERRIDE</addtochat>
+			<equip set="MDT"/>
+		</cmd>
+		<cmd input ="/fight">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="1" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="1" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="8">FIGHT MODE</addtochat>
+			<equip set="FIGHT"/>
+		</cmd>
+		<cmd input ="/fire">
+			<equip set="fire"/>
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="1" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="167">FIRE RES OVERRIDE</addtochat>
+			<equip set="FIRE"/>
+		</cmd>
+		<cmd input ="/ice">
+			<equip set="ice"/>
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="1" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="481">ICE RES OVERRIDE</addtochat>
+			<equip set="ICE"/>
+		</cmd>
+		<cmd input ="/earth">
+			<equip set="earth"/>
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="1" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="69">EARTH RES OVERRIDE</addtochat>
+		</cmd>
+		<cmd input ="/idle">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="1" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="359">IDLE SET</addtochat>
+			<equip set="IDLE"/>
+		</cmd>
+		<cmd input ="/town">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="1" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="0" />
+			<addtochat>TOWN SET</addtochat>
+		</cmd>
+
+		<cmd input ="/ref">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="0" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="1" />
+			<setvar name="KITE" value="0" />
+			<addtochat color="410">REFRESH ON</addtochat>
+		</cmd>
+
+		<cmd input ="/kite">
+			<setvar name="PDT" value="0" />
+			<setvar name="MDT" value="0" />
+			<setvar name="FIGHT" value="0" />
+			<setvar name="fire" value="0" />
+			<setvar name="ice" value="0" />
+			<setvar name="earth" value="0" />
+			<setvar name="idle" value="1" />
+			<setvar name="town" value="0" />
+			<setvar name="refresh" value="0" />
+			<setvar name="KITE" value="1" />
+			<addtochat color="8">KITE MODE</addtochat>
+			<equip set="Kite"/>
+		</cmd>
+
+		<cmd input ="/cheat3">
+			<if advanced="$curecheat=0">
+				<equip set="PrecheatIII"/>
+			<command>/ma "Cure III" &lt;me&gt;</command>
+			</if>
+		</cmd>
+
+		<cmd input ="/cheat4">
+			<if advanced="$curecheat=0">
+				<equip set="PrecheatIV"/>
+			<command>/ma "Cure IV" &lt;me&gt;</command>
+			</if>
+		</cmd>
+
+		<cmd input ="/ichi">
 			<equip set="Utsu"/>
-				<if buffactive="66"> <!-- One shadow are left -->
-					<command delay="3545">/cancel 66</command>
-				</if>
-				<else buffactive="444"> <!-- Two shadows are left -->
-					<command delay="3545">/cancel 444</command>
+			<command>/ma "Utsusemi: Ichi" &lt;me&gt;</command>
+		</cmd>
+
+		<cmd input ="/bowe">
+			<if advanced="$weaponoverride=0">
+				<command>/ac disable range</command>
+				<command>/ac disable ammo</command>
+				<equip><range>Cerberus Bow</range></equip>
+				<setvar name="weaponoverride" value="1" />
+				<addtochat color="44">CERB BOW OVERRIDE ON</addtochat>
+			</if>
+				<else>
+					<if advanced="$weaponoverride=1">
+						<command>/ac enable range</command>
+						<command>/ac enable ammo</command>
+						<setvar name="weaponoverride" value="0" />
+						<addtochat color="55">CERB BOW OVERRIDE OFF</addtochat>
+					</if>
 				</else>
+		</cmd>
+
+	</inputcommands>
+		
+			
+	<idlegear>
+			<if eq_feet="Powder Boots">
+            <equip lock="true">
+                <feet>%eq_feet</feet>
+            </equip>
+        </if>
+       			<if p_status="engaged">
+           			 <equip set="Engaged"/>
+          			  <if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+					<if advanced="$FIGHT=1">
+						<equip set="FIGHT"/>
+						<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+					</if>
+      			</if>
+
+		<if advanced="$IDLE=1">
+           	 	<equip set="IDLEShadowsDown"/>
+			<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+			<if advanced="%p_hpp<51"><equip><ring2>Hercules' Ring</ring2></equip></if>
+			<if buffactive="66">
+				<equip set="IDLE" />
+				<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+				<if advanced="%p_hpp<51"><equip><ring2>Hercules' Ring</ring2></equip></if>
+			</if>
+			<if buffactive="444">
+				<equip set="IDLE" />
+				<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+				<if advanced="%p_hpp<51"><equip><ring2>Hercules' Ring</ring2></equip></if>
+			</if>
+			<if buffactive="445">
+				<equip set="IDLE" />
+				<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+				<if advanced="%p_hpp<51"><equip><ring2>Hercules' Ring</ring2></equip></if>
+			</if>
+			<if buffactive="446">
+				<equip set="IDLE" />
+				<if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+				<if advanced="%p_hpp<51"><equip><ring2>Hercules' Ring</ring2></equip></if>
+			</if>
+
+       			<if p_status="engaged">
+           			 <equip set="Engaged"/>
+          			  <if advanced="%p_hpp>84"><equip><neck>Parade Gorget</neck></equip></if>
+					<if advanced="$FIGHT=1">
+						<equip set="FIGHT"/>
+					</if>
+      			</if>
+
+
 		</if>
-		<if ad_name="Utsusemi: Ni|Tonko*">
-				<equip set="Utsu"/>
+
+		<if advanced="$PDT=1">
+			<equip set="PDT"/>
 		</if>
-		<if ad_name="Monomi: Ichi">
-				<equip set="Haste"/>
-				<command delay="2800">/cancel 71</command>
+
+		<if advanced="$MDT=1">
+			<equip set="MDT"/>
 		</if>
-    </midmagic>
-	
-	
-    <jobability>
-        <if ad_name="Provoke|Defender|Berserk|Warcry">
-            <equip set="Enmity">
-			</equip>
-        </if>
-        <if ad_name="Shield Bash">
-			<equip baseset="Enmity"/>
-            <equip>
-				<hands>Valor Gauntlets</hands>
-			</equip>
-        </if>
-        <if ad_name="Holy Circle">
-			<equip baseset="Enmity"/>
-            <equip>
-				<feet>Gallant Leggings</feet>
-			</equip>
-        </if>
-        <if ad_name="Cover">
-			<equip baseset="Enmity"/>
-            <equip>
-				<head>Gallant Coronet</head>
-				<body>Valor Surcoat</body>
-			</equip>
-        </if>
-        <if ad_name="Sentinel">
-			<equip baseset="Enmity"/>
-            <equip>
-                <feet>Vlr. Leggings +1</feet>
-			</equip>
-        </if>
-        <if ad_name="Rampart">
-			<equip set="Rampart" />
-        </if>
-    </jobability>
-    <weaponskill>
-        <if ad_name="Vorpal Blade*|Swift Blade*">
-            <equip set="Multihit" />
-        </if>
-        <elseif ad_name="Spirits Within*">
-            <equip set="Spirits" />
-        </elseif>
-        <else>
-            <equip set="WS" />
-        </else>
-		<if e_time="> 18.00|<6.00">
-            <equip>
-				<lear>Vampire Earring</lear>
-			</equip>
-        </if>
-    </weaponskill>
+
+		<if advanced="$fire=1">
+			<equip set="FIRE"/>
+		</if>
+
+		<if advanced="$ice=1">
+			<equip set="ICE"/>
+		</if>
+
+		<if advanced="$earth=1">
+			<equip set="EARTH"/>
+		</if>
+
+		<if advanced="$refresh=1">
+			<equip set="refresh"/>
+		</if>
+
+		<if advanced="$KITE=1">
+			<equip set="Kite"/>
+		</if>
+
+	</idlegear>
+
+	<premagic>
+
+		<if ad_skill="Ninjutsu"><equip set="Utsu"/></if>
+		<if ad_name="Reprisal"><equip set="Utsu"/></if>
+
+	</premagic>	
+
+	<midmagic>
+
+		<if ad_name="Cure*|Curaga*">
+			<if advanced="%p_mp=<174"><equip set="HealIII"/></if>
+			<if advanced="%p_mp=>174"><equip set="EconomyHealIII"/></if>
+			<if buffactive="62"><equip set="SentinelHeal" /></if>
+		</if>
+
+		<if ad_name="Cure IV">
+			<equip set="HealIV"/>
+		</if>
+
+		<if ad_name="Phalanx|Bar*">
+			<equip set="Enhance"/>
+		</if>
+
+		<if ad_name="Flash*">
+			<if advanced="%p_mp=<200"><equip set="Flash"/></if>
+			<if advanced="%p_mp=>200"><equip set="FreeFlash"/></if>
+		</if>
+
+	</midmagic>
+
+	<jobability>
+
+		<if ad_name="Provoke"><equip set="MEGAENMITY" /></if>
+		<if ad_name="Sentinel"><equip set="Sentinel" /></if>
+		<if ad_name="Rampart">
+			<equip set="Rampart"/>
+			<if advanced="%e_dayelement=dark"><equip><back>Shadow Mantle</back></equip></if>
+		</if>
+
+		<if ad_name="Shield Bash"><equip set="Bash" /></if>
+
+	</jobability>
+
+	<weaponskill>
+
+		<if ad_name="Vorpal Blade"><equip set="Sword" /></if>
+		<if ad_name="Swift Blade"><equip set="Swift" /></if>
+		<if ad_name="Savage Blade"><equip set="Savage" /></if>
+		<if ad_name="Circle Blade"><equip set="Savage" /></if>
+		<if ad_name="Atonement"><equip set="ATONEMENT" /></if>
+	</weaponskill>
+
 </ashitacast>
