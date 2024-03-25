@@ -27,19 +27,17 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
 
 **PLD XML Includes(Shoutout to Rival for doing the heavy lifting on this one):**
 
+    -Commands: /pdt, /mdt, /fight, /kite, /fire, /ice, /earth, /idle, /town, /ref, /cheat3, /cheat4, /ichi, /bowe
+    
     -Auto sets macrobook depending on sub and lockstyle
   
-    -Swap on ability use: Rampart, Sentinel 
+    -Swap on ability use: Rampart, Sentinel
   
-    -TP swap on engagement
+    -TP/idle swap on engagement and unengagement
 
-    -Cure cheat for both Cure 3 and 4
-  
-    -Idle swap on unengagement
+    -fight command for TP set, ref for vermy for idle refresh
 
-    -W legs on running
-
-    -WS swap on use
+    -Cure cheat for both Cure 3 and 4 utilizing sets "PrecheatIII" and "PreCheatIV".
 
     -Enimity swap on flash/provoke/cure etc.
 
