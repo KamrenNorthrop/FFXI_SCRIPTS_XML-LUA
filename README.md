@@ -1,4 +1,4 @@
-# FFXI_XML_Scripts
+# FFXI_XML_Scripts -- Updated Last: 3/2024
 This section includes XML scripts for LegacyAC for the game FFXI.
 Note: These XMLs do work on HorizonXI.
 
