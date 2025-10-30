@@ -60,3 +60,12 @@ In order to use these scripts first save the file as YourCharacterName_XML and a
   
     -Haste swapping for utsu
 
+**BST LUA Includes:**
+
+    -Commands: /pdt to toggle pdt set, /mdt to toggle mdt set
+    
+    -Sets: Idle / rest / charm / reward / pdt / mdt / call beast / tp / weapon skill 
+    
+    -Haste swapping for utsu
+    
+    -Dynamic ammo slot based on sub job at the time of engagement 
